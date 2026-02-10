@@ -4,6 +4,7 @@ import AboutSection from "@/components/AboutSection";
 import TeamSection from "@/components/TeamSection";
 import ContactSection from "@/components/ContactSection";
 import heroImage from "@/assets/hero-anthuri.jpg";
+import { anthuriTeam } from "@/data/teamData";
 
 const AnthuriFund = () => {
   return (
@@ -14,22 +15,13 @@ const AnthuriFund = () => {
         ctaText="Learn more"
         image={heroImage}
       />
-
       <AboutSection
         paragraphs={[
           "Anthuri Fund deploys capital into sustainable infrastructure and businesses driving meaningful environmental and social impact. We focus on sectors where long-term structural tailwinds align with responsible investment principles.",
           "Our approach combines institutional rigour with a deep commitment to measurable impact. We partner with management teams who are building businesses that will define the next generation of energy, infrastructure, and resource efficiency.",
         ]}
       />
-
-      <TeamSection
-        members={[
-          { name: "Lerato Molefe", role: "Fund Manager", bio: "Specialist in sustainable infrastructure and energy transition." },
-          { name: "David Kruger", role: "Investment Analyst", bio: "Focused on impact measurement and ESG integration." },
-          { name: "Amara Osei", role: "Portfolio Manager", bio: "Oversees asset management and stakeholder engagement." },
-        ]}
-      />
-
+      <TeamSection members={anthuriTeam} />
       <ContactSection divisionName="Anthuri Fund" />
     </Layout>
   );

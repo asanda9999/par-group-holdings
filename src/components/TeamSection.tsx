@@ -1,8 +1,5 @@
-interface TeamMember {
-  name: string;
-  role: string;
-  bio?: string;
-}
+import { Link } from "react-router-dom";
+import type { TeamMember } from "@/data/teamData";
 
 interface TeamSectionProps {
   members: TeamMember[];
@@ -17,19 +14,31 @@ const TeamSection = ({ members }: TeamSectionProps) => {
         </h2>
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-10">
           {members.map((member) => (
-            <div key={member.name} className="space-y-2">
-              {/* Placeholder avatar */}
-              <div className="w-16 h-16 rounded-full bg-muted flex items-center justify-center mb-4">
-                <span className="text-lg font-semibold text-muted-foreground">
-                  {member.name.split(" ").map((n) => n[0]).join("")}
-                </span>
+            <Link
+              key={member.slug}
+              to={`${member.divisionPath}/team/${member.slug}`}
+              className="group block"
+            >
+              <div className="relative overflow-hidden rounded-md aspect-[3/4]">
+                <img
+                  src={member.image}
+                  alt={member.name}
+                  className="w-full h-full object-cover grayscale group-hover:grayscale-0 transition-all duration-500"
+                />
+                {/* Hover overlay with bio */}
+                <div className="absolute inset-0 bg-primary/80 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-end p-6">
+                  <p className="text-sm text-primary-foreground/90 leading-relaxed">
+                    {member.bio}
+                  </p>
+                </div>
               </div>
-              <h3 className="text-base font-semibold text-foreground">{member.name}</h3>
-              <p className="text-sm text-muted-foreground">{member.role}</p>
-              {member.bio && (
-                <p className="text-sm text-foreground/60 leading-relaxed">{member.bio}</p>
-              )}
-            </div>
+              <div className="mt-4 space-y-1">
+                <h3 className="text-base font-semibold text-foreground group-hover:text-primary transition-colors">
+                  {member.name}
+                </h3>
+                <p className="text-sm text-muted-foreground">{member.role}</p>
+              </div>
+            </Link>
           ))}
         </div>
       </div>
