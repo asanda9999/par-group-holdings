@@ -2,6 +2,7 @@ import Layout from "@/components/Layout";
 import HeroSection from "@/components/HeroSection";
 import AboutSection from "@/components/AboutSection";
 import TeamSection from "@/components/TeamSection";
+import ContactSection from "@/components/ContactSection";
 import heroImage from "@/assets/hero-parequity.jpg";
 
 const ParEquity = () => {
@@ -28,6 +29,8 @@ const ParEquity = () => {
           { name: "Michael Chen", role: "Partner", bio: "Focused on operational value creation across the portfolio." },
         ]}
       />
+
+      <ContactSection divisionName="ParEquity" />
     </Layout>
   );
 };

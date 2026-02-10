@@ -2,6 +2,7 @@ import Layout from "@/components/Layout";
 import HeroSection from "@/components/HeroSection";
 import AboutSection from "@/components/AboutSection";
 import TeamSection from "@/components/TeamSection";
+import ContactSection from "@/components/ContactSection";
 import heroImage from "@/assets/hero-parvest.jpg";
 
 const Parvest = () => {
@@ -28,6 +29,8 @@ const Parvest = () => {
           { name: "Lucas Ferrara", role: "Associate", bio: "Supports deal execution and portfolio monitoring." },
         ]}
       />
+
+      <ContactSection divisionName="Parvest" />
     </Layout>
   );
 };

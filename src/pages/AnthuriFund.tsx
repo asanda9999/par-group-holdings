@@ -2,6 +2,7 @@ import Layout from "@/components/Layout";
 import HeroSection from "@/components/HeroSection";
 import AboutSection from "@/components/AboutSection";
 import TeamSection from "@/components/TeamSection";
+import ContactSection from "@/components/ContactSection";
 import heroImage from "@/assets/hero-anthuri.jpg";
 
 const AnthuriFund = () => {
@@ -28,6 +29,8 @@ const AnthuriFund = () => {
           { name: "Amara Osei", role: "Portfolio Manager", bio: "Oversees asset management and stakeholder engagement." },
         ]}
       />
+
+      <ContactSection divisionName="Anthuri Fund" />
     </Layout>
   );
 };
