@@ -1,6 +1,6 @@
 import { useParams, useLocation, Link } from "react-router-dom";
 import Layout from "@/components/Layout";
-import { ArrowLeft } from "lucide-react";
+import { ArrowLeft, Calendar, TrendingUp, Building } from "lucide-react";
 import {
   parequityPortfolio,
   anthuriPortfolio,
@@ -38,65 +38,128 @@ const PortfolioDetailPage = () => {
 
   return (
     <Layout>
-      <div className="pt-24 pb-20">
-        <div className="max-w-4xl mx-auto px-6 lg:px-12">
-          {/* Back link */}
-          <Link
-            to={investment.divisionPath}
-            className="inline-flex items-center gap-2 text-sm text-muted-foreground hover:text-foreground transition-colors mb-10"
-          >
-            <ArrowLeft className="h-4 w-4" />
-            Back to {divisionName}
-          </Link>
+      <div className="pb-20">
+        {/* Hero Section with overlaid text */}
+        <div className="relative h-screen max-h-[600px] mb-12">
+          <img
+            src={investment.image}
+            alt={investment.name}
+            className="w-full h-full object-cover object-center"
+          />
+          <div className="absolute inset-0 bg-black/40"></div>
+          <div className="absolute inset-0 flex flex-col justify-end p-6 lg:p-12">
+            <div className="max-w-6xl mx-auto w-full">
+              {/* Back link */}
+              <Link
+                to={investment.divisionPath}
+                className="inline-flex items-center gap-2 text-sm text-white/90 hover:text-white transition-colors mb-8"
+              >
+                <ArrowLeft className="h-4 w-4" />
+                Back to {divisionName}
+              </Link>
 
-          {/* Header */}
-          <div className="mb-10">
-            <span className="text-xs font-medium uppercase tracking-wider text-primary/70 mb-2 block">
-              {investment.sector}
-            </span>
-            <h1 className="text-3xl md:text-4xl font-bold text-foreground mb-3">
-              {investment.name}
-            </h1>
-            <div className="flex items-center gap-4 text-sm text-muted-foreground">
-              <span>Invested {investment.yearInvested}</span>
-              <span className="inline-flex items-center gap-1.5">
-                <span
-                  className={`h-2 w-2 rounded-full ${
-                    investment.status === "Active"
-                      ? "bg-green-500"
-                      : "bg-muted-foreground"
-                  }`}
-                />
-                {investment.status}
-              </span>
+              {/* Header */}
+              <div>
+                <span className="text-xs font-medium uppercase tracking-wider text-white/70 mb-3 block">
+                  PROPERTY
+                </span>
+                <h1 className="text-4xl md:text-5xl font-bold text-white">
+                  {investment.name}
+                </h1>
+              </div>
             </div>
           </div>
+        </div>
 
-          {/* Performance stats */}
-          <div className="grid grid-cols-2 md:grid-cols-4 gap-4 mb-12">
-            {investment.stats.map((stat) => (
-              <div
-                key={stat.label}
-                className="bg-primary/5 border border-primary/10 rounded-md p-5 text-center"
-              >
-                <p className="text-2xl font-bold text-primary">{stat.value}</p>
-                <p className="text-xs text-muted-foreground mt-1 uppercase tracking-wide">
-                  {stat.label}
-                </p>
+        {/* Content below hero */}
+        <div className="max-w-6xl mx-auto px-6 lg:px-12">
+          {/* Two-column layout */}
+          <div className="grid grid-cols-1 lg:grid-cols-3 gap-12">
+            {/* Left column - Overview and Key Highlights */}
+            <div className="lg:col-span-2 space-y-10">
+              {/* Overview section */}
+              <div>
+                <h2 className="text-2xl font-semibold text-foreground mb-6">
+                  Overview
+                </h2>
+                <div className="space-y-4">
+                  {investment.fullDescription.map((paragraph, i) => (
+                    <p
+                      key={i}
+                      className="text-base leading-relaxed text-foreground/80"
+                    >
+                      {paragraph}
+                    </p>
+                  ))}
+                </div>
               </div>
-            ))}
-          </div>
 
-          {/* Full description */}
-          <div className="space-y-5">
-            {investment.fullDescription.map((p, i) => (
-              <p
-                key={i}
-                className="text-base md:text-lg leading-relaxed text-foreground/80"
-              >
-                {p}
-              </p>
-            ))}
+              {/* Key Highlights section */}
+              <div>
+                <h2 className="text-2xl font-semibold text-foreground mb-6">
+                  Key Highlights
+                </h2>
+                <ul className="space-y-3">
+                  {investment.stats.map((stat, i) => (
+                    <li
+                      key={i}
+                      className="flex items-start gap-3 text-foreground/80"
+                    >
+                      <span className="text-primary font-semibold mt-0.5">
+                        •
+                      </span>
+                      <span>
+                        <strong>{stat.value}</strong> {stat.label}
+                      </span>
+                    </li>
+                  ))}
+                </ul>
+              </div>
+            </div>
+
+            {/* Right column - Investment Details */}
+            <div className="lg:col-span-1">
+              <div className="bg-gray-50 rounded-lg p-8">
+                <h2 className="text-lg font-semibold text-foreground mb-6">
+                  INVESTMENT DETAILS
+                </h2>
+                
+                <div className="space-y-6">
+                  {/* Year */}
+                  <div className="flex items-center gap-3">
+                    <Calendar className="h-5 w-5 text-muted-foreground" />
+                    <div>
+                      <p className="text-sm text-muted-foreground">Year</p>
+                      <p className="font-medium text-foreground">
+                        {investment.yearInvested}
+                      </p>
+                    </div>
+                  </div>
+
+                  {/* Status */}
+                  <div className="flex items-center gap-3">
+                    <TrendingUp className="h-5 w-5 text-muted-foreground" />
+                    <div>
+                      <p className="text-sm text-muted-foreground">Status</p>
+                      <p className="font-medium text-foreground">
+                        {investment.status}
+                      </p>
+                    </div>
+                  </div>
+
+                  {/* Sector */}
+                  <div className="flex items-center gap-3">
+                    <Building className="h-5 w-5 text-muted-foreground" />
+                    <div>
+                      <p className="text-sm text-muted-foreground">Sector</p>
+                      <p className="font-medium text-foreground">
+                        {investment.sector}
+                      </p>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
           </div>
         </div>
       </div>

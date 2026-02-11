@@ -1,5 +1,5 @@
 import { Link } from "react-router-dom";
-import { ArrowRight } from "lucide-react";
+import { motion } from "framer-motion";
 
 interface GatewayTileProps {
   title: string;
@@ -10,26 +10,26 @@ interface GatewayTileProps {
 
 const tileStyles = [
   "bg-primary text-primary-foreground",
-  "bg-accent text-accent-foreground",
+  "bg-accent text-accent-foreground", 
   "bg-secondary text-secondary-foreground",
 ];
 
 const hoverStyles = [
-  "hover:bg-primary/90",
+  "hover:bg-primary/100",
   "hover:bg-accent/80",
   "hover:bg-secondary/80",
 ];
 
 const subtextStyles = [
-  "text-primary-foreground/70",
-  "text-muted-foreground",
-  "text-muted-foreground",
+  "text-primary-foreground/90",
+  "text-accent-foreground/90",
+  "text-secondary-foreground/90",
 ];
 
-const arrowStyles = [
-  "text-primary-foreground/60 group-hover:text-primary-foreground",
-  "text-accent-foreground/60 group-hover:text-accent-foreground",
-  "text-secondary-foreground/60 group-hover:text-secondary-foreground",
+const buttonStyles = [
+  "border-primary-foreground text-primary-foreground hover:bg-primary-foreground hover:text-primary",
+  "border-accent-foreground text-accent-foreground hover:bg-accent-foreground hover:text-accent",
+  "border-secondary-foreground text-secondary-foreground hover:bg-secondary-foreground hover:text-secondary",
 ];
 
 const borderStyles = [
@@ -39,22 +39,68 @@ const borderStyles = [
 ];
 
 const GatewayTile = ({ title, descriptor, to, index }: GatewayTileProps) => {
+  // Split title into two parts for the two-line display
+  // Special case: keep "Anthuri Fund" on the same line
+  let mainTitle, subTitle;
+  if (title === "Anthuri Fund") {
+    mainTitle = title;
+    subTitle = "";
+  } else {
+    const titleParts = title.split(' ');
+    mainTitle = titleParts[0];
+    subTitle = titleParts.slice(1).join(' ');
+  }
+
   return (
-    <Link
-      to={to}
-      className={`group flex flex-col justify-end p-8 md:p-10 lg:p-14 transition-all duration-300 ${tileStyles[index]} ${hoverStyles[index]} ${borderStyles[index]}`}
+    <motion.div
+      whileHover={{
+        scale: [1, 1.04, 1.02],
+        y: -8,
+        boxShadow: "0 20px 40px rgba(0,0,0,0.15)",
+        zIndex: 10,
+        transition: {
+          scale: {
+            type: "spring",
+            stiffness: 400,
+            damping: 15,
+            duration: 0.4
+          },
+          y: {
+            duration: 0.3,
+            ease: "easeOut"
+          },
+          boxShadow: {
+            duration: 0.3,
+            ease: "easeOut"
+          }
+        }
+      }}
+      initial={{ scale: 1, zIndex: 1 }}
     >
-      <div className="mt-auto">
-        <h2 className="text-2xl md:text-3xl font-semibold mb-3">{title}</h2>
-        <p className={`text-sm md:text-base leading-relaxed ${subtextStyles[index]}`}>
-          {descriptor}
-        </p>
-        <div className={`mt-8 flex items-center gap-2 text-sm font-medium opacity-0 group-hover:opacity-100 transition-opacity duration-300 ${arrowStyles[index]}`}>
-          <span>Explore</span>
-          <ArrowRight className="h-4 w-4" />
+      <Link
+        to={to}
+        className={`h-full w-full group flex flex-col items-center justify-center p-8 md:p-10 lg:p-14 text-center transition-all duration-300 ${tileStyles[index]} ${hoverStyles[index]} ${borderStyles[index]}`}
+      >
+        <div className="flex flex-col items-center space-y-6 max-w-md">
+          <div className="space-y-2">
+            <h1 className="text-3xl md:text-4xl lg:text-5xl font-light">
+              {mainTitle}
+            </h1>
+            <h2 className="text-xl md:text-2xl lg:text-3xl font-normal">
+              {subTitle}
+            </h2>
+          </div>
+          
+          <p className={`text-sm md:text-base leading-relaxed text-center ${subtextStyles[index]}`}>
+            {descriptor}
+          </p>
+          
+          <button className={`px-6 py-3 border rounded-md font-semibold text-sm uppercase tracking-wide transition-all duration-300 ${buttonStyles[index]}`}>
+            Learn More
+          </button>
         </div>
-      </div>
-    </Link>
+      </Link>
+    </motion.div>
   );
 };
 

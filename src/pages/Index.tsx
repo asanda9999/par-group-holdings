@@ -21,26 +21,11 @@ const tiles = [
 
 const Index = () => {
   return (
-    <Layout>
-      <div className="min-h-[calc(100vh-4rem)] flex flex-col">
-        {/* Group identity bar */}
-        <div className="px-6 lg:px-12 py-8 bg-primary">
-          <div className="max-w-7xl mx-auto">
-            <h1 className="text-2xl md:text-3xl font-semibold text-primary-foreground tracking-tight">
-              Paragon Group
-            </h1>
-            <p className="mt-1 text-sm text-primary-foreground/70">
-              One group. Three focused investment mandates.
-            </p>
-          </div>
-        </div>
-
-        {/* Full-height tiles */}
-        <div className="flex-1 grid grid-cols-1 md:grid-cols-3">
-          {tiles.map((tile, i) => (
-            <GatewayTile key={tile.title} {...tile} index={i} />
-          ))}
-        </div>
+    <Layout showHeader={false}>
+      <div className="min-h-screen grid grid-cols-1 md:grid-cols-3">
+        {tiles.map((tile, i) => (
+          <GatewayTile key={tile.title} {...tile} index={i} />
+        ))}
       </div>
     </Layout>
   );

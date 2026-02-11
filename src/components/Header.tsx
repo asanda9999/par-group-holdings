@@ -1,109 +1,184 @@
 import { Link, useLocation } from "react-router-dom";
 import { useState } from "react";
 import { Menu, X } from "lucide-react";
+import { motion, AnimatePresence } from "framer-motion";
 
-const gatewayLinks = [
+// Division navigation (takes you to each division page)
+const divisionLinks = [
+  { label: "ParVest", path: "/parvest" },
+  { label: "Anthuri", path: "/anthuri-fund" },
   { label: "ParEquity", path: "/parequity" },
-  { label: "Anthuri Fund", path: "/anthuri-fund" },
-  { label: "Parvest", path: "/parvest" },
 ];
 
-const divisionLinks = [
-  { label: "Home", path: "#", isScrollTop: true },
-  { label: "About", path: "#about" },
-  { label: "Contact", path: "#contact" },
+// In-division content navigation (scrolls within the current page)
+const contentLinks = [
+  { label: "HOME", id: "top" as const },
+  { label: "ABOUT", id: "about" as const },
+  { label: "CONTACT", id: "contact" as const },
 ];
 
 const Header = () => {
-  const location = useLocation();
   const [mobileOpen, setMobileOpen] = useState(false);
+  const location = useLocation();
 
-  const isDivisionPage = ["/parequity", "/anthuri-fund", "/parvest"].includes(location.pathname);
-  const navLinks = isDivisionPage ? divisionLinks : gatewayLinks;
-
-  const handleNavClick = (link: typeof divisionLinks[0], e: React.MouseEvent) => {
-    if ("isScrollTop" in link && link.isScrollTop) {
-      e.preventDefault();
+  const handleScrollTo = (id: "top" | "about" | "contact") => {
+    if (id === "top") {
       window.scrollTo({ top: 0, behavior: "smooth" });
+      return;
     }
-    setMobileOpen(false);
+
+    const el = document.getElementById(id);
+    if (el) {
+      const rect = el.getBoundingClientRect();
+      const offset = window.scrollY + rect.top - 80; // account for header height
+      window.scrollTo({ top: offset, behavior: "smooth" });
+    }
   };
 
   return (
-    <header className="fixed top-0 left-0 right-0 z-50 bg-background/95 backdrop-blur-sm border-b border-border">
-      <div className="max-w-7xl mx-auto px-6 lg:px-12 h-16 flex items-center justify-between">
-        <Link to="/" className="text-xl font-semibold tracking-tight text-foreground">
-          Paragon Group
-        </Link>
-
-        {/* Desktop nav */}
-        <nav className="hidden md:flex items-center gap-8">
-          {navLinks.map((link) =>
-            isDivisionPage ? (
-              <a
-                key={link.label}
-                href={link.path}
-                onClick={(e) => handleNavClick(link as any, e)}
-                className="text-sm font-medium text-muted-foreground hover:text-foreground transition-colors duration-200"
-              >
-                {link.label}
-              </a>
-            ) : (
+    <header className="relative top-0 left-0 right-0 z-50">
+      {/* Top bar: divisions */}
+      <div className="w-full bg-slate-900 text-slate-100">
+        <div className="max-w-7xl mx-auto px-6 lg:px-12 h-10 flex items-center justify-center md:justify-start gap-6 text-[10px] md:text-xs tracking-[0.2em] uppercase">
+          {divisionLinks.map((link) => {
+            const isActive = location.pathname.startsWith(link.path);
+            return (
               <Link
                 key={link.path}
                 to={link.path}
-                className={`text-sm font-medium transition-colors duration-200 ${
-                  location.pathname === link.path
-                    ? "text-foreground"
-                    : "text-muted-foreground hover:text-foreground"
+                className={`pb-2 border-b-2 transition-colors ${
+                  isActive
+                    ? "text-white border-white"
+                    : "text-slate-100 border-transparent hover:text-white"
                 }`}
               >
                 {link.label}
               </Link>
-            )
-          )}
-        </nav>
-
-        {/* Mobile toggle */}
-        <button
-          className="md:hidden text-foreground"
-          onClick={() => setMobileOpen(!mobileOpen)}
-          aria-label="Toggle menu"
-        >
-          {mobileOpen ? <X className="h-5 w-5" /> : <Menu className="h-5 w-5" />}
-        </button>
+            );
+          })}
+        </div>
       </div>
 
-      {/* Mobile nav */}
-      {mobileOpen && (
-        <nav className="md:hidden border-t border-border bg-background px-6 py-4 space-y-3">
-          {navLinks.map((link) =>
-            isDivisionPage ? (
-              <a
-                key={link.label}
-                href={link.path}
-                onClick={(e) => handleNavClick(link as any, e)}
-                className="block text-sm font-medium text-muted-foreground"
-              >
-                {link.label}
-              </a>
-            ) : (
-              <Link
-                key={link.path}
-                to={link.path}
-                onClick={() => setMobileOpen(false)}
-                className={`block text-sm font-medium transition-colors ${
-                  location.pathname === link.path
-                    ? "text-foreground"
-                    : "text-muted-foreground"
-                }`}
-              >
-                {link.label}
+      {/* Main bar: centered logo + right content nav */}
+      <div className="bg-white border-b border-border">
+        <div className="max-w-7xl mx-auto px-6 lg:px-12 h-24 flex items-center">
+          <div className="grid grid-cols-[1fr_auto_1fr] items-center w-full">
+            {/* Left spacer on desktop (keeps logo truly centered) */}
+            <div className="hidden md:block" />
+
+            {/* Centered logo */}
+            <div className="flex items-center justify-center">
+              <Link to="/" className="flex items-center justify-center">
+                <img
+                  src="/src/assets/par-logo.png"
+                  alt="Par Group Holdings"
+                  className="h-14 md:h-20 w-auto"
+                />
               </Link>
-            )
+            </div>
+
+            {/* Right: Desktop content nav */}
+            <motion.nav
+              className="hidden md:flex items-center justify-end gap-8 text-xs tracking-[0.35em] uppercase"
+              initial={{ opacity: 0, y: -8 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.3, ease: "easeOut" }}
+            >
+              {contentLinks.map((link) => (
+                <button
+                  key={link.label}
+                  onClick={() => handleScrollTo(link.id)}
+                  className="relative text-muted-foreground hover:text-foreground transition-colors"
+                >
+                  {link.label}
+                </button>
+              ))}
+            </motion.nav>
+
+            {/* Mobile menu toggle (right side) */}
+            <div className="flex md:hidden items-center justify-end">
+              <motion.button
+                className="text-foreground"
+                onClick={() => setMobileOpen(!mobileOpen)}
+                aria-label="Toggle menu"
+                whileTap={{ scale: 0.95 }}
+                whileHover={{ scale: 1.05 }}
+                transition={{ duration: 0.15, ease: "easeOut" }}
+              >
+                <motion.div
+                  animate={{ rotate: mobileOpen ? 180 : 0 }}
+                  transition={{ duration: 0.3, ease: "easeOut" }}
+                >
+                  {mobileOpen ? <X className="h-5 w-5" /> : <Menu className="h-5 w-5" />}
+                </motion.div>
+              </motion.button>
+            </div>
+          </div>
+        </div>
+
+        {/* Mobile nav: divisions + content links together */}
+        <AnimatePresence>
+          {mobileOpen && (
+            <motion.nav
+              className="md:hidden border-t border-border px-6 py-4 space-y-4 bg-background"
+              initial={{ opacity: 0, height: 0 }}
+              animate={{ opacity: 1, height: "auto" }}
+              exit={{ opacity: 0, height: 0 }}
+              transition={{ duration: 0.3, ease: "easeOut" }}
+            >
+              <div className="space-y-2">
+                {divisionLinks.map((link, index) => (
+                  <motion.div
+                    key={link.path}
+                    initial={{ opacity: 0, x: -20 }}
+                    animate={{ opacity: 1, x: 0 }}
+                    transition={{
+                      duration: 0.3,
+                      ease: "easeOut",
+                      delay: index * 0.05,
+                    }}
+                  >
+                    <Link
+                      to={link.path}
+                      onClick={() => setMobileOpen(false)}
+                      className={`block text-sm font-medium transition-colors ${
+                        location.pathname.startsWith(link.path)
+                          ? "text-white"
+                          : "text-muted-foreground hover:text-foreground"
+                      }`}
+                    >
+                      {link.label}
+                    </Link>
+                  </motion.div>
+                ))}
+              </div>
+
+              <div className="mt-2 border-t border-border pt-3 space-y-2">
+                {contentLinks.map((link, index) => (
+                  <motion.button
+                    key={link.label}
+                    onClick={() => {
+                      handleScrollTo(link.id);
+                      setMobileOpen(false);
+                    }}
+                    className="block w-full text-left text-sm font-medium text-muted-foreground hover:text-foreground"
+                    initial={{ opacity: 0, x: -20 }}
+                    animate={{ opacity: 1, x: 0 }}
+                    transition={{
+                      duration: 0.3,
+                      ease: "easeOut",
+                      delay: 0.15 + index * 0.05,
+                    }}
+                    whileHover={{ x: 4 }}
+                  >
+                    {link.label}
+                  </motion.button>
+                ))}
+              </div>
+            </motion.nav>
           )}
-        </nav>
-      )}
+        </AnimatePresence>
+      </div>
     </header>
   );
 };
