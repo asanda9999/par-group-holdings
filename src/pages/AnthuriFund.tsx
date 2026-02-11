@@ -1,10 +1,12 @@
 import Layout from "@/components/Layout";
 import HeroSection from "@/components/HeroSection";
 import AboutSection from "@/components/AboutSection";
+import PortfolioSection from "@/components/PortfolioSection";
 import TeamSection from "@/components/TeamSection";
 import ContactSection from "@/components/ContactSection";
 import heroImage from "@/assets/hero-anthuri.jpg";
 import { anthuriTeam } from "@/data/teamData";
+import { anthuriPortfolio } from "@/data/portfolioData";
 
 const AnthuriFund = () => {
   return (
@@ -21,6 +23,7 @@ const AnthuriFund = () => {
           "Our approach combines institutional rigour with a deep commitment to measurable impact. We partner with management teams who are building businesses that will define the next generation of energy, infrastructure, and resource efficiency.",
         ]}
       />
+      <PortfolioSection investments={anthuriPortfolio} />
       <TeamSection members={anthuriTeam} />
       <ContactSection divisionName="Anthuri Fund" />
     </Layout>
