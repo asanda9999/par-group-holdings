@@ -1,10 +1,12 @@
 import Layout from "@/components/Layout";
 import HeroSection from "@/components/HeroSection";
 import AboutSection from "@/components/AboutSection";
+import PortfolioSection from "@/components/PortfolioSection";
 import TeamSection from "@/components/TeamSection";
 import ContactSection from "@/components/ContactSection";
 import heroImage from "@/assets/hero-parvest.jpg";
 import { parvestTeam } from "@/data/teamData";
+import { parvestPortfolio } from "@/data/portfolioData";
 
 const Parvest = () => {
   return (
@@ -21,6 +23,7 @@ const Parvest = () => {
           "We bring more than capital. Our team works closely with portfolio companies on strategic planning, talent acquisition, and market expansion — supporting founders through the critical stages of scaling from growth to market leadership.",
         ]}
       />
+      <PortfolioSection investments={parvestPortfolio} />
       <TeamSection members={parvestTeam} />
       <ContactSection divisionName="Parvest" />
     </Layout>

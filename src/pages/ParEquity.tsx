@@ -1,10 +1,12 @@
 import Layout from "@/components/Layout";
 import HeroSection from "@/components/HeroSection";
 import AboutSection from "@/components/AboutSection";
+import PortfolioSection from "@/components/PortfolioSection";
 import TeamSection from "@/components/TeamSection";
 import ContactSection from "@/components/ContactSection";
 import heroImage from "@/assets/hero-parequity.jpg";
 import { parequityTeam } from "@/data/teamData";
+import { parequityPortfolio } from "@/data/portfolioData";
 
 const ParEquity = () => {
   return (
@@ -21,6 +23,7 @@ const ParEquity = () => {
           "Our philosophy is rooted in alignment. We structure partnerships that allow founders and operators to retain meaningful ownership while accessing the capital and expertise needed to scale. We invest in businesses, not transactions.",
         ]}
       />
+      <PortfolioSection investments={parequityPortfolio} />
       <TeamSection members={parequityTeam} />
       <ContactSection divisionName="ParEquity" />
     </Layout>
