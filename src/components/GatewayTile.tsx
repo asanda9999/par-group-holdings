@@ -54,17 +54,11 @@ const GatewayTile = ({ title, descriptor, to, index }: GatewayTileProps) => {
   return (
     <motion.div
       whileHover={{
-        scale: [1, 1.04, 1.02],
+        scaleY: 1.04,
         y: -8,
         boxShadow: "0 20px 40px rgba(0,0,0,0.15)",
         zIndex: 10,
         transition: {
-          scale: {
-            type: "spring",
-            stiffness: 400,
-            damping: 15,
-            duration: 0.4
-          },
           y: {
             duration: 0.3,
             ease: "easeOut"
