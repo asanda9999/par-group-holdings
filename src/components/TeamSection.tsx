@@ -38,7 +38,7 @@ const TeamSection = ({ members }: TeamSectionProps) => {
   };
 
   return (
-    <section className="py-20 md:py-28 bg-section-alt">
+    <section id="team" className="py-20 md:py-28 bg-section-alt">
       <div className="max-w-7xl mx-auto px-6 lg:px-12">
         <AnimatedSection delay={0.2}>
           <h2 className="text-sm font-medium uppercase tracking-widest text-muted-foreground mb-12">

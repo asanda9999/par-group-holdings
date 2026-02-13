@@ -14,6 +14,8 @@ const divisionLinks = [
 const contentLinks = [
   { label: "HOME", id: "top" as const },
   { label: "ABOUT", id: "about" as const },
+  { label: "PORTFOLIO", id: "portfolio" as const },
+  { label: "TEAM", id: "team" as const },
   { label: "CONTACT", id: "contact" as const },
 ];
 
@@ -21,7 +23,7 @@ const Header = () => {
   const [mobileOpen, setMobileOpen] = useState(false);
   const location = useLocation();
 
-  const handleScrollTo = (id: "top" | "about" | "contact") => {
+  const handleScrollTo = (id: "top" | "about" | "portfolio" | "team" | "contact") => {
     if (id === "top") {
       window.scrollTo({ top: 0, behavior: "smooth" });
       return;
