@@ -6,9 +6,11 @@ import AnimatedNavLink from "./AnimatedNavLink";
 
 // Division navigation (takes you to each division page)
 const divisionLinks = [
-  { label: "ParVest", path: "/parvest" },
-  { label: "Anthuri", path: "/anthuri-fund" },
   { label: "ParEquity", path: "/parequity" },
+  { label: "Anthuri", path: "/anthuri-fund" },
+  { label: "ParVest", path: "/parvest" },
+  
+  ,
 ];
 
 // In-division content navigation (scrolls within the current page)

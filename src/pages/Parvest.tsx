@@ -7,25 +7,10 @@ import ContactSection from "@/components/ContactSection";
 import heroImage from "@/assets/hero-parvest.jpg";
 import { parvestTeam } from "@/data/teamData";
 import { parvestPortfolio } from "@/data/portfolioData";
-import { useEffect } from "react";
-import { useLocation } from "react-router-dom";
+import { useScrollToHash } from "@/hooks/useScrollToHash";
 
 const Parvest = () => {
-  const location = useLocation();
-
-  useEffect(() => {
-    if (location.state?.scrollToPortfolio) {
-      const timer = setTimeout(() => {
-        const el = document.getElementById("portfolio");
-        if (el) {
-          const rect = el.getBoundingClientRect();
-          const offset = window.scrollY + rect.top - 80; // account for header height
-          window.scrollTo({ top: offset, behavior: "smooth" });
-        }
-      }, 100); // Small delay to ensure DOM is ready
-      return () => clearTimeout(timer);
-    }
-  }, [location]);
+  useScrollToHash();
 
   return (
     <Layout>

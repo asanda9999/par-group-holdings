@@ -12,7 +12,9 @@ interface AnimatedNavLinkProps {
   isActive?: boolean;
 }
 
-const StyledWrapper = styled.div<{ lineColor?: string; activeColor?: string; isActive?: boolean }>`
+const StyledWrapper = styled.div.withConfig({
+  shouldForwardProp: (prop) => !['lineColor', 'activeColor', 'isActive'].includes(prop)
+})<{ lineColor?: string; activeColor?: string; isActive?: boolean }>`
   .nav-link {
     color: inherit;
     text-decoration: none;

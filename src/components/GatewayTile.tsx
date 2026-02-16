@@ -28,7 +28,7 @@ const subtextStyles = [
 
 const buttonStyles = [
   "border-primary-foreground text-primary-foreground hover:bg-primary-foreground hover:text-primary",
-  "border-accent-foreground text-accent-foreground hover:bg-accent-foreground hover:text-accent",
+  "border-accent-foreground text-accent-foreground hover:bg-accent-foreground hover:text-white",
   "border-secondary-foreground text-secondary-foreground hover:bg-secondary-foreground hover:text-secondary",
 ];
 
