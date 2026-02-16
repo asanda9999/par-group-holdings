@@ -7,12 +7,30 @@ import ContactSection from "@/components/ContactSection";
 import heroImage from "@/assets/hero-parequity.jpg";
 import { parequityTeam } from "@/data/teamData";
 import { parequityPortfolio } from "@/data/portfolioData";
+import { useEffect } from "react";
+import { useLocation } from "react-router-dom";
 
 const ParEquity = () => {
+  const location = useLocation();
+
+  useEffect(() => {
+    if (location.state?.scrollToPortfolio) {
+      const timer = setTimeout(() => {
+        const el = document.getElementById("portfolio");
+        if (el) {
+          const rect = el.getBoundingClientRect();
+          const offset = window.scrollY + rect.top - 80; // account for header height
+          window.scrollTo({ top: offset, behavior: "smooth" });
+        }
+      }, 100); // Small delay to ensure DOM is ready
+      return () => clearTimeout(timer);
+    }
+  }, [location]);
+
   return (
     <Layout>
       <HeroSection
-        title="ParEquity"
+        title="PAREQUITY"
         subtitle="Long-term private equity partnerships with established businesses built on trust, alignment, and patient capital."
         ctaText="Learn more"
         image={heroImage}

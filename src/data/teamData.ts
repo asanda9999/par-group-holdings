@@ -1,13 +1,19 @@
 // Team member images
-import jamesHartley from "@/assets/team/james-hartley.jpg";
-import sarahNdlovu from "@/assets/team/sarah-ndlovu.jpg";
-import michaelChen from "@/assets/team/michael-chen.jpg";
-import leratoMolefe from "@/assets/team/lerato-molefe.jpg";
-import davidKruger from "@/assets/team/david-kruger.jpg";
-import amaraOsei from "@/assets/team/amara-osei.jpg";
-import thomasVanDerBerg from "@/assets/team/thomas-van-der-berg.jpg";
-import priyaNaidoo from "@/assets/team/priya-naidoo.jpg";
-import lucasFerrara from "@/assets/team/lucas-ferrara.jpg";
+import jamesHartley from "../assets/team/james-hartley.jpg";
+import sarahNdlovu from "../assets/team/sarah-ndlovu.jpg";
+import michaelChen from "../assets/team/michael-chen.jpg";
+import leratoMolefe from "../assets/team/lerato-molefe.jpg";
+import davidKruger from "../assets/team/david-kruger.jpg";
+import amaraOsei from "../assets/team/amara-osei.jpg";
+import thomasVanDerBerg from "../assets/team/thomas-van-der-berg.jpg";
+import priyaNaidoo from "../assets/team/priya-naidoo.jpg";
+import lucasFerrara from "../assets/team/lucas-ferrara.jpg";
+import enrico from "../assets/team/enrico.png";
+import patrick from "../assets/team/patrick.png";
+import robert from "../assets/team/robert.png";
+import marlon from "../assets/team/marlon.png";
+import sly from "../assets/team/Slyvester.png";
+
 
 export interface TeamMember {
   slug: string;
@@ -22,11 +28,11 @@ export interface TeamMember {
 
 export const parequityTeam: TeamMember[] = [
   {
-    slug: "james-hartley",
-    name: "James Hartley",
+    slug: "patrick-parring",
+    name: "Patrick Parring",
     role: "Managing Partner",
     bio: "20+ years in private equity and corporate finance.",
-    image: jamesHartley,
+    image: patrick,
     division: "ParEquity",
     divisionPath: "/parequity",
     fullBio: [
@@ -36,11 +42,11 @@ export const parequityTeam: TeamMember[] = [
     ],
   },
   {
-    slug: "sarah-ndlovu",
-    name: "Sarah Ndlovu",
+    slug: "robert-parring",
+    name: "Robert Parring",
     role: "Investment Director",
     bio: "Leads deal origination and portfolio strategy.",
-    image: sarahNdlovu,
+    image: robert,
     division: "ParEquity",
     divisionPath: "/parequity",
     fullBio: [
@@ -50,11 +56,11 @@ export const parequityTeam: TeamMember[] = [
     ],
   },
   {
-    slug: "michael-chen",
-    name: "Michael Chen",
+    slug: "marlon-parring",
+    name: "Marlon Parring",
     role: "Partner",
     bio: "Focused on operational value creation across the portfolio.",
-    image: michaelChen,
+    image: marlon,
     division: "ParEquity",
     divisionPath: "/parequity",
     fullBio: [
@@ -67,11 +73,11 @@ export const parequityTeam: TeamMember[] = [
 
 export const anthuriTeam: TeamMember[] = [
   {
-    slug: "lerato-molefe",
-    name: "Lerato Molefe",
+    slug: "patrick-parring",
+    name: "Patrick Parring",
     role: "Fund Manager",
     bio: "Specialist in sustainable infrastructure and energy transition.",
-    image: leratoMolefe,
+    image: patrick,
     division: "Anthuri Fund",
     divisionPath: "/anthuri-fund",
     fullBio: [
@@ -81,11 +87,11 @@ export const anthuriTeam: TeamMember[] = [
     ],
   },
   {
-    slug: "david-kruger",
-    name: "David Kruger",
+    slug: "robert-parring",
+    name: "Robert Parring",
     role: "Investment Analyst",
     bio: "Focused on impact measurement and ESG integration.",
-    image: davidKruger,
+    image: robert,
     division: "Anthuri Fund",
     divisionPath: "/anthuri-fund",
     fullBio: [
@@ -95,11 +101,25 @@ export const anthuriTeam: TeamMember[] = [
     ],
   },
   {
-    slug: "amara-osei",
-    name: "Amara Osei",
+    slug: "enrico-cupido",
+    name: "Enrico Cupido",
+    role: "Investment Analyst",
+    bio: "Focused on impact measurement and ESG integration.",
+    image: enrico,
+    division: "Anthuri Fund",
+    divisionPath: "/anthuri-fund",
+    fullBio: [
+      "David Kruger is an Investment Analyst at Anthuri Fund, where he supports the investment process with a particular focus on impact measurement, ESG integration, and financial analysis. He plays a key role in evaluating new opportunities and monitoring portfolio performance.",
+      "David has a background in environmental science and finance, giving him a unique perspective on the intersection of sustainability and investment returns. He is skilled in building impact frameworks that align with international reporting standards.",
+      "He holds a BCom (Honours) in Financial Analysis from the University of Pretoria and is currently pursuing his CFA designation. David is passionate about deploying capital into projects that deliver measurable environmental and social outcomes.",
+    ],
+  },
+  {
+    slug: "sylvester-albanie",
+    name: "Sylvester Albanie",
     role: "Portfolio Manager",
     bio: "Oversees asset management and stakeholder engagement.",
-    image: amaraOsei,
+    image: sly,
     division: "Anthuri Fund",
     divisionPath: "/anthuri-fund",
     fullBio: [
@@ -112,11 +132,11 @@ export const anthuriTeam: TeamMember[] = [
 
 export const parvestTeam: TeamMember[] = [
   {
-    slug: "thomas-van-der-berg",
-    name: "Thomas van der Berg",
+    slug: "patrick-parring",
+    name: "Patrick Parring",
     role: "Managing Partner",
     bio: "Serial investor focused on technology and growth equity.",
-    image: thomasVanDerBerg,
+    image: patrick,
     division: "Parvest",
     divisionPath: "/parvest",
     fullBio: [
@@ -126,11 +146,11 @@ export const parvestTeam: TeamMember[] = [
     ],
   },
   {
-    slug: "priya-naidoo",
-    name: "Priya Naidoo",
+    slug: "robert-parring",
+    name: "Robert Parring",
     role: "Principal",
     bio: "Leads venture investments across fintech and healthtech.",
-    image: priyaNaidoo,
+    image: robert,
     division: "Parvest",
     divisionPath: "/parvest",
     fullBio: [
@@ -140,11 +160,11 @@ export const parvestTeam: TeamMember[] = [
     ],
   },
   {
-    slug: "lucas-ferrara",
-    name: "Lucas Ferrara",
+    slug: "marlon-parring",
+    name: "Marlon Parring",
     role: "Associate",
     bio: "Supports deal execution and portfolio monitoring.",
-    image: lucasFerrara,
+    image: marlon,
     division: "Parvest",
     divisionPath: "/parvest",
     fullBio: [

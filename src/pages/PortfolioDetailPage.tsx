@@ -1,4 +1,5 @@
-import { useParams, useLocation, Link } from "react-router-dom";
+import { useParams, useLocation, Link, useNavigate } from "react-router-dom";
+import { useEffect } from "react";
 import Layout from "@/components/Layout";
 import { ArrowLeft, Calendar, TrendingUp, Building } from "lucide-react";
 import {
@@ -17,8 +18,24 @@ const allPortfolios: PortfolioInvestment[] = [
 const PortfolioDetailPage = () => {
   const { slug } = useParams<{ slug: string }>();
   const location = useLocation();
+  const navigate = useNavigate();
 
   const investment = allPortfolios.find((i) => i.slug === slug);
+
+  const handleBackClick = () => {
+    navigate(investment.divisionPath, { state: { scrollToPortfolio: true } });
+  };
+
+  // Handle smooth scrolling when coming from portfolio section
+  useEffect(() => {
+    if (location.state?.scrollToPortfolio) {
+      // This will be handled by the navigation
+      const timer = setTimeout(() => {
+        window.history.replaceState({}, document.title, location.pathname);
+      }, 100);
+      return () => clearTimeout(timer);
+    }
+  }, [location]);
 
   if (!investment) {
     return (
@@ -50,13 +67,13 @@ const PortfolioDetailPage = () => {
           <div className="absolute inset-0 flex flex-col justify-end p-6 lg:p-12">
             <div className="max-w-6xl mx-auto w-full">
               {/* Back link */}
-              <Link
-                to={investment.divisionPath}
-                className="inline-flex items-center gap-2 text-sm text-white/90 hover:text-white transition-colors mb-8"
+              <button
+                onClick={handleBackClick}
+                className="inline-flex items-center gap-2 text-sm text-white/90 hover:text-white transition-colors mb-8 bg-transparent border-none cursor-pointer"
               >
                 <ArrowLeft className="h-4 w-4" />
-                Back to {divisionName}
-              </Link>
+                Back to Portfolio
+              </button>
 
               {/* Header */}
               <div>

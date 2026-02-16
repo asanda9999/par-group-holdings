@@ -38,14 +38,14 @@ const TeamSection = ({ members }: TeamSectionProps) => {
   };
 
   return (
-    <section id="team" className="py-20 md:py-28 bg-section-alt">
+    <section id="team" className="py-20 md:py-28" style={{backgroundColor: '#0f172a'}}>
       <div className="max-w-7xl mx-auto px-6 lg:px-12">
         <AnimatedSection delay={0.2}>
-          <h2 className="text-sm font-medium uppercase tracking-widest text-muted-foreground mb-12">
+          <h2 className="text-2xl md:text-3xl font-medium uppercase tracking-widest text-white mb-12 text-center">
             Our Team
           </h2>
         </AnimatedSection>
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-10">
+        <div className={`grid gap-10 ${members.length === 4 ? 'grid-cols-1 sm:grid-cols-2 lg:max-w-4xl lg:mx-auto' : 'grid-cols-1 sm:grid-cols-2 lg:grid-cols-3'}`}>
           {members.map((member, index) => (
             <AnimatedSection key={member.slug} delay={0.1 + (index * 0.1)}>
               <motion.div {...cardMotionProps}>
@@ -53,13 +53,13 @@ const TeamSection = ({ members }: TeamSectionProps) => {
                   to={`${member.divisionPath}/team/${member.slug}`}
                   className="group block"
                 >
-                  <div className="relative overflow-hidden rounded-md aspect-[3/4]">
+                  <div className="relative overflow-hidden rounded-md aspect-square">
                     <motion.img
                       src={member.image}
                       alt={member.name}
-                      className="w-full h-full object-cover"
-                      initial={{ filter: "grayscale(100%)" }}
-                      whileHover={{ filter: shouldReduceMotion ? "grayscale(100%)" : "grayscale(0%)" }}
+                      className="w-full h-full object-contain object-center"
+                      initial={{ filter: "none" }}
+                      whileHover={{ filter: "none" }}
                       transition={{ duration: 0.5, ease: "easeOut" }}
                     />
                     {/* Hover overlay with bio */}
@@ -74,15 +74,16 @@ const TeamSection = ({ members }: TeamSectionProps) => {
                       </p>
                     </motion.div>
                   </div>
-                  <div className="mt-4 space-y-1">
+                  <div className="mt-4 text-center space-y-1">
                     <motion.h3 
-                      className="text-base font-semibold text-foreground"
-                      whileHover={{ color: shouldReduceMotion ? "hsl(var(--foreground))" : "hsl(var(--primary))" }}
+                      className="text-base font-semibold"
+                      style={{color: '#ffffff'}}
+                      whileHover={{ color: shouldReduceMotion ? "#ffffff" : "hsl(var(--primary))" }}
                       transition={{ duration: 0.2, ease: "easeOut" }}
                     >
                       {member.name}
                     </motion.h3>
-                    <p className="text-sm text-muted-foreground">{member.role}</p>
+                    <p className="text-sm" style={{color: 'rgba(255, 255, 255, 0.8)'}}>{member.role}</p>
                   </div>
                 </Link>
               </motion.div>

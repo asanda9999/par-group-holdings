@@ -28,7 +28,7 @@ const TeamMemberPage = () => {
                 <img
                   src={member.image}
                   alt={member.name}
-                  className="w-full h-full object-cover grayscale"
+                  className="w-full h-full object-contain object-center"
                 />
               </div>
             </div>

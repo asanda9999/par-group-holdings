@@ -77,10 +77,10 @@ const GatewayTile = ({ title, descriptor, to, index }: GatewayTileProps) => {
       >
         <div className="flex flex-col items-center space-y-6 max-w-md">
           <div className="space-y-2">
-            <h1 className="text-3xl md:text-4xl lg:text-5xl font-light">
+            <h1 className="text-3xl md:text-4xl lg:text-5xl font-light uppercase">
               {mainTitle}
             </h1>
-            <h2 className="text-xl md:text-2xl lg:text-3xl font-normal">
+            <h2 className="text-xl md:text-2xl lg:text-3xl font-normal uppercase">
               {subTitle}
             </h2>
           </div>

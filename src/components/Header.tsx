@@ -2,6 +2,7 @@ import { Link, useLocation } from "react-router-dom";
 import { useState } from "react";
 import { Menu, X } from "lucide-react";
 import { motion, AnimatePresence } from "framer-motion";
+import AnimatedNavLink from "./AnimatedNavLink";
 
 // Division navigation (takes you to each division page)
 const divisionLinks = [
@@ -45,17 +46,16 @@ const Header = () => {
           {divisionLinks.map((link) => {
             const isActive = location.pathname.startsWith(link.path);
             return (
-              <Link
+              <AnimatedNavLink
                 key={link.path}
                 to={link.path}
-                className={`pb-2 border-b-2 transition-colors ${
-                  isActive
-                    ? "text-white border-white"
-                    : "text-slate-100 border-transparent hover:text-white"
-                }`}
+                lineColor="#ffffff"
+                activeColor="#ffffff"
+                isActive={isActive}
+                className={`${isActive ? "text-white" : "text-slate-100 hover:text-white"}`}
               >
                 {link.label}
-              </Link>
+              </AnimatedNavLink>
             );
           })}
         </div>
@@ -63,7 +63,7 @@ const Header = () => {
 
       {/* Main bar: centered logo + right content nav */}
       <div className="bg-white border-b border-border">
-        <div className="max-w-7xl mx-auto px-6 lg:px-12 h-24 flex items-center">
+        <div className="max-w-7xl mx-auto px-6 lg:px-12 h-32 flex items-center">
           <div className="grid grid-cols-[1fr_auto_1fr] items-center w-full">
             {/* Left spacer on desktop (keeps logo truly centered) */}
             <div className="hidden md:block" />
@@ -74,7 +74,7 @@ const Header = () => {
                 <img
                   src="/src/assets/par-logo.png"
                   alt="Par Group Holdings"
-                  className="h-14 md:h-20 w-auto"
+                  className="h-20 md:h-32 w-auto"
                 />
               </Link>
             </div>
@@ -87,13 +87,14 @@ const Header = () => {
               transition={{ duration: 0.3, ease: "easeOut" }}
             >
               {contentLinks.map((link) => (
-                <button
+                <AnimatedNavLink
                   key={link.label}
                   onClick={() => handleScrollTo(link.id)}
-                  className="relative text-muted-foreground hover:text-foreground transition-colors"
+                  lineColor="#000000"
+                  className="text-muted-foreground hover:text-foreground"
                 >
                   {link.label}
-                </button>
+                </AnimatedNavLink>
               ))}
             </motion.nav>
 
@@ -140,30 +141,27 @@ const Header = () => {
                       delay: index * 0.05,
                     }}
                   >
-                    <Link
+                    <AnimatedNavLink
                       to={link.path}
-                      onClick={() => setMobileOpen(false)}
-                      className={`block text-sm font-medium transition-colors ${
+                      lineColor="#ffffff"
+                      activeColor="#ffffff"
+                      isActive={location.pathname.startsWith(link.path)}
+                      className={`block text-sm font-medium ${
                         location.pathname.startsWith(link.path)
                           ? "text-white"
                           : "text-muted-foreground hover:text-foreground"
                       }`}
                     >
                       {link.label}
-                    </Link>
+                    </AnimatedNavLink>
                   </motion.div>
                 ))}
               </div>
 
               <div className="mt-2 border-t border-border pt-3 space-y-2">
                 {contentLinks.map((link, index) => (
-                  <motion.button
+                  <motion.div
                     key={link.label}
-                    onClick={() => {
-                      handleScrollTo(link.id);
-                      setMobileOpen(false);
-                    }}
-                    className="block w-full text-left text-sm font-medium text-muted-foreground hover:text-foreground"
                     initial={{ opacity: 0, x: -20 }}
                     animate={{ opacity: 1, x: 0 }}
                     transition={{
@@ -173,8 +171,17 @@ const Header = () => {
                     }}
                     whileHover={{ x: 4 }}
                   >
-                    {link.label}
-                  </motion.button>
+                    <AnimatedNavLink
+                      onClick={() => {
+                        handleScrollTo(link.id);
+                        setMobileOpen(false);
+                      }}
+                      lineColor="#000000"
+                      className="block w-full text-left text-sm font-medium text-muted-foreground hover:text-foreground"
+                    >
+                      {link.label}
+                    </AnimatedNavLink>
+                  </motion.div>
                 ))}
               </div>
             </motion.nav>

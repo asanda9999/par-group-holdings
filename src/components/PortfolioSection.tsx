@@ -42,7 +42,7 @@ const PortfolioSection = ({ investments }: PortfolioSectionProps) => {
     <section id="portfolio" className="py-20 md:py-28 bg-section-alt">
       <div className="max-w-7xl mx-auto px-6 lg:px-12">
         <AnimatedSection delay={0.2}>
-          <h2 className="text-sm font-medium uppercase tracking-widest text-muted-foreground mb-12">
+          <h2 className="text-2xl font-medium uppercase tracking-widest text-muted-foreground mb-12">
             Portfolio
           </h2>
         </AnimatedSection>

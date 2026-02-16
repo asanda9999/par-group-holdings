@@ -9,6 +9,7 @@ interface AnimatedSectionProps {
   delay?: number;
   duration?: number;
   y?: number;
+  x?: number;
 }
 
 export const AnimatedSection = ({ 
@@ -16,7 +17,8 @@ export const AnimatedSection = ({
   className = "", 
   delay = 0,
   duration = 0.6,
-  y = 20
+  y = 20,
+  x = 0
 }: AnimatedSectionProps) => {
   const ref = useRef(null);
   const isInView = useInView(ref, { once: true, margin: "-100px" });
@@ -27,12 +29,12 @@ export const AnimatedSection = ({
     animate: isInView ? { opacity: 1 } : { opacity: 0 },
     transition: { duration: 0.3 }
   } : {
-    initial: { opacity: 0, y },
-    animate: isInView ? { opacity: 1, y: 0 } : { opacity: 0, y },
+    initial: { opacity: 0, x, y: x !== 0 ? 0 : y },
+    animate: isInView ? { opacity: 1, x: 0, y: 0 } : { opacity: 0, x, y: x !== 0 ? 0 : y },
     transition: { 
       duration, 
       delay,
-      ease: "easeOut" as const
+      ease: [0.25, 0.46, 0.45, 0.94] as [number, number, number, number] // Custom cubic bezier for smoother sliding
     }
   };
 
@@ -54,6 +56,7 @@ interface StaggeredChildrenProps {
   childDelay?: number;
   duration?: number;
   y?: number;
+  x?: number;
 }
 
 export const StaggeredChildren = ({ 
@@ -62,7 +65,8 @@ export const StaggeredChildren = ({
   staggerDelay = 0.1,
   childDelay = 0,
   duration = 0.5,
-  y = 20
+  y = 20,
+  x = 0
 }: StaggeredChildrenProps) => {
   const ref = useRef(null);
   const isInView = useInView(ref, { once: true, margin: "-100px" });
@@ -73,12 +77,12 @@ export const StaggeredChildren = ({
     animate: isInView ? { opacity: 1 } : { opacity: 0 },
     transition: { duration: 0.3 }
   } : {
-    initial: { opacity: 0, y },
-    animate: isInView ? { opacity: 1, y: 0 } : { opacity: 0, y },
+    initial: { opacity: 0, x, y: x !== 0 ? 0 : y },
+    animate: isInView ? { opacity: 1, x: 0, y: 0 } : { opacity: 0, x, y: x !== 0 ? 0 : y },
     transition: { 
       duration, 
       delay: childDelay,
-      ease: "easeOut" as const
+      ease: [0.25, 0.46, 0.45, 0.94] as [number, number, number, number] // Custom cubic bezier for smoother sliding
     }
   };
 
@@ -94,7 +98,8 @@ export const StaggeredChildren = ({
                 animate={motionProps.animate}
                 transition={{ 
                   ...motionProps.transition,
-                  delay: finalDelay
+                  delay: finalDelay,
+                  ease: [0.25, 0.46, 0.45, 0.94] as [number, number, number, number]
                 }}
               >
                 {child}
