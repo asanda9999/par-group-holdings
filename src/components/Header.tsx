@@ -74,7 +74,7 @@ const Header = () => {
             <div className="flex items-center justify-center">
               <Link to="/" className="flex items-center justify-center">
                 <img
-                  src="/src/assets/par-logo.png"
+                  src="/src/assets/par-logo.jpg"
                   alt="Par Group Holdings"
                   className="h-20 md:h-32 w-auto"
                 />
