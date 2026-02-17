@@ -1,4 +1,5 @@
 import { useParams, Link, Navigate } from "react-router-dom";
+import { useEffect } from "react";
 import Layout from "@/components/Layout";
 import { allTeamMembers } from "@/data/teamData";
 import { ArrowLeft } from "lucide-react";
@@ -7,6 +8,15 @@ import AnimatedCounter from "@/components/AnimatedCounter";
 const TeamMemberPage = () => {
   const { slug } = useParams<{ slug: string }>();
   const member = allTeamMembers.find((m) => m.slug === slug);
+
+  // Scroll to top when component mounts
+  useEffect(() => {
+    // Using smooth scroll to prevent layout shift issues
+    window.scrollTo({
+      top: 0,
+      behavior: 'smooth'
+    });
+  }, [slug]); // Re-run when slug changes
 
   if (!member) return <Navigate to="/" replace />;
 

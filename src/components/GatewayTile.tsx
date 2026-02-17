@@ -9,32 +9,32 @@ interface GatewayTileProps {
 }
 
 const tileStyles = [
+  "bg-accent text-accent-foreground", // First tile now uses accent colors
   "bg-primary text-primary-foreground",
-  "bg-accent text-accent-foreground", 
   "bg-secondary text-secondary-foreground",
 ];
 
 const hoverStyles = [
+  "hover:bg-accent/80", // First tile now uses accent hover
   "hover:bg-primary/100",
-  "hover:bg-accent/80",
   "hover:bg-secondary/80",
 ];
 
 const subtextStyles = [
+  "text-accent-foreground/90", // First tile now uses accent text
   "text-primary-foreground/90",
-  "text-accent-foreground/90",
   "text-secondary-foreground/90",
 ];
 
 const buttonStyles = [
+  "border-accent-foreground text-accent-foreground hover:bg-accent-foreground hover:text-white", // First tile now uses accent button
   "border-primary-foreground text-primary-foreground hover:bg-primary-foreground hover:text-primary",
-  "border-accent-foreground text-accent-foreground hover:bg-accent-foreground hover:text-white",
   "border-secondary-foreground text-secondary-foreground hover:bg-secondary-foreground hover:text-secondary",
 ];
 
 const borderStyles = [
+  "md:border-l md:border-r border-t md:border-t-0 border-border", // First tile now has borders
   "",
-  "md:border-l md:border-r border-t md:border-t-0 border-border",
   "border-t md:border-t-0 border-border",
 ];
 

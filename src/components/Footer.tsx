@@ -2,30 +2,39 @@ import { Link } from "react-router-dom";
 
 const Footer = () => {
   return (
-    <footer className="border-t border-border bg-background">
+    <footer className="bg-[#0f172a] text-white">
       <div className="max-w-7xl mx-auto px-6 lg:px-12 py-12">
         <div className="flex flex-col md:flex-row justify-between items-start gap-8">
           <div>
-            <h3 className="text-base font-semibold text-foreground">Par Equity Group</h3>
-            <p className="mt-2 text-sm text-muted-foreground max-w-sm">
+            <h3 className="text-base font-semibold">Par Equity Group</h3>
+            <p className="mt-2 text-sm text-white/80 max-w-sm">
               A focused investment group with three distinct mandates.
+            </p>
+            <p className="mt-2 text-sm text-white/80 max-w-sm">
+              ParEquity | Anthuri Fund | Parvest
             </p>
           </div>
 
-          <nav className="flex gap-8">
-            <Link to="/parequity" className="text-sm text-muted-foreground hover:text-foreground transition-colors">
-              ParEquity
-            </Link>
-            <Link to="/anthuri-fund" className="text-sm text-muted-foreground hover:text-foreground transition-colors">
-              Anthuri Fund
-            </Link>
-            <Link to="/parvest" className="text-sm text-muted-foreground hover:text-foreground transition-colors">
-              Parvest
-            </Link>
-          </nav>
+          <div className="space-y-2">
+            <h3 className="text-base font-semibold">Contact Us</h3>
+            <p className="text-sm text-white/80">
+              <a href="tel:+27123456789" className="hover:text-white transition-colors">
+                +27 12 345 6789
+              </a>
+            </p>
+            <p className="text-sm text-white/80">
+              <a href="mailto:info@parequitygroup.com" className="hover:text-white transition-colors">
+                info@parequitygroup.com
+              </a>
+            </p>
+          </div>
         </div>
 
-        
+        <div className="mt-12 pt-8 border-t border-border">
+          <p className="text-sm text-white/80 text-center">
+            © {new Date().getFullYear()} Par Equity Group. All rights reserved.
+          </p>
+        </div>
       </div>
     </footer>
   );
