@@ -1,5 +1,5 @@
 import { useParams, useNavigate } from "react-router-dom";
-import { ArrowLeft, Calendar, TrendingUp } from "lucide-react";
+import { ArrowLeft, Calendar, TrendingUp, DollarSign, Users, MapPin, Percent, Zap, Droplet, Leaf, Truck, ShieldCheck, Activity } from "lucide-react";
 import {
   parequityPortfolio,
   anthuriPortfolio,
@@ -87,13 +87,43 @@ const PortfolioDetailPage = () => {
 
               <h2 className="font-display text-2xl font-bold text-foreground mb-6">Key Highlights</h2>
               <ul className="space-y-4">
-                {item.stats.map((stat, i) => (
-                  <li key={i} className="flex items-start gap-3">
-                    <TrendingUp className="w-4 h-4 text-accent mt-1 shrink-0" />
-                    <span className="text-muted-foreground text-sm leading-relaxed">
-                      <strong>{stat.value}</strong> {stat.label}
-                    </span>
-                  </li>
+                {item.stats.map((stat, i) => {
+                  // Function to determine which icon to show based on stat label
+                  const getIcon = () => {
+                    const iconProps = { className: "w-4 h-4 text-foreground mt-1 shrink-0" };
+                    const label = stat.label.toLowerCase();
+                    
+                    if (label.includes('revenue') || label.includes('$') || label.includes('ebitda')) 
+                      return <DollarSign {...iconProps} />;
+                    if (label.includes('%') || label.includes('margin') || label.includes('rate')) 
+                      return <Percent {...iconProps} />;
+                    if (label.includes('employee') || label.includes('user') || label === 'team') 
+                      return <Users {...iconProps} />;
+                    if (label.includes('province') || label.includes('market') || label.includes('location')) 
+                      return <MapPin {...iconProps} />;
+                    if (label.includes('mw') || label.includes('capacity') || label.includes('power')) 
+                      return <Zap {...iconProps} />;
+                    if (label.includes('water') || label.includes('litre')) 
+                      return <Droplet {...iconProps} />;
+                    if (label.includes('co₂') || label.includes('green') || label.includes('solar') || label.includes('renewable')) 
+                      return <Leaf {...iconProps} />;
+                    if (label.includes('carrier') || label.includes('load') || label.includes('mile') || label.includes('logistic')) 
+                      return <Truck {...iconProps} />;
+                    if (label.includes('verify') || label.includes('credential') || label.includes('compliance')) 
+                      return <ShieldCheck {...iconProps} />;
+                    
+                    return <Activity {...iconProps} />;
+                  };
+                  
+                  return (
+                    <li key={i} className="flex items-start gap-3">
+                      {getIcon()}
+                      <span className="text-muted-foreground text-sm leading-relaxed">
+                        <strong className="text-foreground">{stat.value}</strong> {stat.label}
+                      </span>
+                    </li>
+                  );
+                })}
                 ))}
               </ul>
             </div>
