@@ -10,13 +10,13 @@ interface GatewayTileProps {
 
 const tileStyles = [
   "bg-accent text-accent-foreground", // First tile now uses accent colors
-  "bg-primary text-primary-foreground",
+  "bg-[#0f172a] text-primary-foreground",
   "bg-secondary text-secondary-foreground",
 ];
 
 const hoverStyles = [
   "hover:bg-accent/80", // First tile now uses accent hover
-  "hover:bg-primary/100",
+  "hover:bg-[#0f172a]/90",
   "hover:bg-secondary/80",
 ];
 
