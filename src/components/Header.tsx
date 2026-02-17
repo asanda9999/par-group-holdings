@@ -1,4 +1,5 @@
 import { Link, useLocation } from "react-router-dom";
+import parLogo from '../assets/par-logo.jpg';
 import { useState } from "react";
 import { Menu, X } from "lucide-react";
 import { motion, AnimatePresence } from "framer-motion";
@@ -74,7 +75,7 @@ const Header = () => {
             <div className="flex items-center justify-center">
               <Link to="/" className="flex items-center justify-center">
                 <img
-                  src="/src/assets/par-logo.jpg"
+                  src={parLogo}
                   alt="Par Group Holdings"
                   className="h-20 md:h-32 w-auto"
                 />
