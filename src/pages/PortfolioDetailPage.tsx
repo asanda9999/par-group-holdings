@@ -90,7 +90,7 @@ const PortfolioDetailPage = () => {
                 {item.stats.map((stat, i) => {
                   // Function to determine which icon to show based on stat label
                   const getIcon = () => {
-                    const iconProps = { className: "w-4 h-4 text-foreground mt-1 shrink-0" };
+                    const iconProps = { className: "w-4 h-4 text-black mt-1 shrink-0" };
                     const label = stat.label.toLowerCase();
                     
                     if (label.includes('revenue') || label.includes('$') || label.includes('ebitda')) 
@@ -118,8 +118,8 @@ const PortfolioDetailPage = () => {
                   return (
                     <li key={i} className="flex items-start gap-3">
                       {getIcon()}
-                      <span className="text-muted-foreground text-sm leading-relaxed">
-                        <strong className="text-foreground">{stat.value}</strong> {stat.label}
+                      <span className="text-gray-800 text-sm leading-relaxed">
+                        <strong className="text-black">{stat.value}</strong> {stat.label}
                       </span>
                     </li>
                   );
