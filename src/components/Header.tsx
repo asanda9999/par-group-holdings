@@ -64,15 +64,15 @@ const Header = () => {
         </div>
       </div>
 
-      {/* Main bar: centered logo + right content nav */}
-      <div className="bg-white border-b border-border">
-        <div className="max-w-7xl mx-auto px-6 lg:px-12 h-32 flex items-center">
+      {/* Main bar: centered logo + right content nav - hidden on mobile */}
+      <div className="hidden md:block bg-white border-b border-border">
+        <div className="max-w-7xl mx-auto px-6 lg:px-12 h-16 md:h-32 flex items-center">
           <div className="grid grid-cols-[1fr_auto_1fr] items-center w-full">
             {/* Left spacer on desktop (keeps logo truly centered) */}
             <div className="hidden md:block" />
 
-            {/* Centered logo */}
-            <div className="flex items-center justify-center">
+            {/* Centered logo - hidden on mobile */}
+            <div className="hidden md:flex items-center justify-center">
               <Link to="/" className="flex items-center justify-center">
                 <img
                   src={parLogo}
@@ -101,8 +101,8 @@ const Header = () => {
               ))}
             </motion.nav>
 
-            {/* Mobile menu toggle (right side) */}
-            <div className="flex md:hidden items-center justify-end">
+            {/* Mobile menu toggle (right side) - hidden on mobile */}
+            <div className="hidden items-center justify-end">
               <motion.button
                 className="text-foreground"
                 onClick={() => setMobileOpen(!mobileOpen)}

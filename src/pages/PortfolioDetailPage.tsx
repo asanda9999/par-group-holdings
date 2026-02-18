@@ -76,7 +76,7 @@ const PortfolioDetailPage = () => {
           <div className="grid md:grid-cols-3 gap-12">
             {/* Main */}
             <div className="md:col-span-2">
-              <h2 className="font-display text-2xl font-bold text-foreground mb-6">Overview</h2>
+              <h2 className="font-display text-2xl font-normal text-foreground mb-6">PORTFOLIO OVERVIEW</h2>
               <div className="space-y-4 mb-10">
                 {item.fullDescription.map((paragraph, i) => (
                   <p key={i} className="text-muted-foreground leading-relaxed">
@@ -85,7 +85,7 @@ const PortfolioDetailPage = () => {
                 ))}
               </div>
 
-              <h2 className="font-display text-2xl font-bold text-foreground mb-6">Key Highlights</h2>
+              <h2 className="font-display text-2xl font-normal text-foreground mb-6">KEY HIGHLIGHTS</h2>
               <ul className="space-y-4">
                 {item.stats.map((stat, i) => {
                   // Function to determine which icon to show based on stat label

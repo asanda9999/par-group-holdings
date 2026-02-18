@@ -104,7 +104,7 @@ const TeamMemberPage = () => {
           {/* ===== EXPERTISE ===== */}
           {member.expertise?.length > 0 && (
             <div className="mt-24 border-t pt-16">
-              <h2 className="text-xl font-semibold mb-8">Expertise</h2>
+              <h2 className="text-xl font-normal mb-8">EXPERTISE</h2>
 
               <div className="flex flex-wrap gap-3">
                 {member.expertise.map((skill, i) => (
@@ -122,7 +122,7 @@ const TeamMemberPage = () => {
           {/* ===== ACHIEVEMENTS ===== */}
           {member.achievements?.length > 0 && (
             <div className="mt-24 border-t pt-16">
-              <h2 className="text-xl font-semibold mb-8">Key Achievements</h2>
+              <h2 className="text-xl font-normal mb-8">KEY ACHIEVEMENTS</h2>
 
               <ul className="space-y-4 max-w-3xl">
                 {member.achievements.map((item, i) => (
