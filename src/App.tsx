@@ -4,6 +4,7 @@ import { TooltipProvider } from "@/components/ui/tooltip";
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import InitialLoadLoader from "@/components/InitialLoadLoader";
+import ScrollToTop from "@/components/ScrollToTop";
 import Index from "./pages/Index";
 import ParEquity from "./pages/ParEquity";
 import AnthuriFund from "./pages/AnthuriFund";
@@ -21,6 +22,7 @@ const App = () => (
       <Sonner />
       <InitialLoadLoader />
       <BrowserRouter>
+        <ScrollToTop />
         <Routes>
           <Route path="/" element={<Index />} />
           <Route path="/parequity" element={<ParEquity />} />
