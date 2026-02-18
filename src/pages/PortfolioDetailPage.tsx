@@ -136,21 +136,21 @@ const PortfolioDetailPage = () => {
                 </h3>
                 <div className="space-y-4">
                   <div className="flex items-center gap-3">
-                    <Calendar className="w-4 h-4 text-accent" />
+                    <Calendar className="w-4 h-4 text-black" />
                     <div>
                       <p className="text-xs text-muted-foreground">Year</p>
                       <p className="text-sm font-medium text-foreground">{item.yearInvested}</p>
                     </div>
                   </div>
                   <div className="flex items-center gap-3">
-                    <TrendingUp className="w-4 h-4 text-accent" />
+                    <TrendingUp className="w-4 h-4 text-black" />
                     <div>
                       <p className="text-xs text-muted-foreground">Status</p>
                       <p className="text-sm font-medium text-foreground">{item.status}</p>
                     </div>
                   </div>
                   <div className="flex items-center gap-3">
-                    <div className="w-4 h-4 rounded-full bg-accent shrink-0" />
+                    <div className="w-4 h-4 rounded-full bg-black shrink-0" />
                     <div>
                       <p className="text-xs text-muted-foreground">Sector</p>
                       <p className="text-sm font-medium text-foreground">{item.sector}</p>
