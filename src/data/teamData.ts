@@ -35,373 +35,250 @@ export interface TeamMember {
   }[];
 }
 
+export interface BaseTeamMember {
+  slug: string;
+  name: string;
+  bio: string;
+  image: string;
+  fullBio: string[];
+  expertise: string[];
+  achievements: string[];
+  stats: {
+    value: number;
+    label: string;
+    suffix?: string;
+  }[];
+}
 
-export const parequityTeam: TeamMember[] = [
+export interface DivisionRole {
+  role: string;
+  division: string;
+  divisionPath: string;
+}
+
+
+// Base team members with consistent information across divisions
+export const baseTeamMembers: BaseTeamMember[] = [
   {
     slug: "patrick-parring",
     name: "Patrick Parring",
-    role: "Managing Partner",
-    bio: "20+ years in private equity and corporate finance.",
+    bio: "Seasoned entrepreneur, investor, and visionary leader",
     image: patrick,
-    division: "ParEquity",
-    divisionPath: "/parequity",
     fullBio: [
-      "James Hartley is the Managing Partner of ParEquity, bringing over two decades of experience in private equity, corporate finance, and strategic advisory. He has led investments across industrials, financial services, and consumer sectors, with a consistent focus on long-term value creation.",
-      "Prior to founding ParEquity, James held senior positions at leading investment firms where he was responsible for deal origination, structuring, and portfolio management. He holds an MBA from London Business School and a BCom from the University of Cape Town.",
-      "James is deeply committed to partnership-driven investing, working closely with management teams to build businesses that endure. He serves on multiple portfolio company boards and is an active contributor to industry thought leadership.",
+      "Patrick Parring is a seasoned entrepreneur, investor, and visionary leader with over four decades of experience in infrastructure, property development, private equity, and professional services. His journey began humbly as a labourer and welder at Cape Gate Fence and Wire Works",
+      "His dedication and talent saw him rise rapidly through the ranks at Nedsteel, becoming Contracts Manger and then Director despite apartheid-era barriers that limited advancement for people of colour. He left Nedsteel and founded his own business in 1989.",
+      "In a remarkable milestone, Patrick bought Nedsteel in 1994—the same year South Africa held its first democratic elections. Since then, he has built and led numerous ventures under the ParEquity brand, expanding into key sectors and laying the groundwork for pan-African growth.",
     ],
-     expertise: [
-    "Deal Origination",
-    "Cross-Border Transactions",
-    "Portfolio Strategy",
-    "Regulatory Structuring",
-    "Financial Modelling",
-    "Capital Allocation"
-  ],
-
-  achievements: [
-    "Led transactions exceeding $2 billion in aggregate value",
-    "Expanded fund presence into 3 new markets",
-    "Implemented institutional investment committee framework",
-    "Recognized industry thought leader in emerging market PE"
-  ],
-
-  stats: [
-    { value: 18, label: "Years Experience", suffix: "+" },
-    { value: 45, label: "Transactions Led", suffix: "+" },
-    { value: 6, label: "Core Competencies" }
-  ]
-
+    expertise: [
+      "Deal Origination",
+      "Cross-Border Transactions",
+      "Portfolio Strategy",
+      "Regulatory Structuring",
+      "Financial Modelling",
+      "Capital Allocation"
+    ],
+    achievements: [
+      "Loerie Award for Achievement",
+      "ABSA/Cape Times Emerging Business Person of the Year.",
+      "National Winner, IMM Institute of Marketing Manager's Emerging Business Marketer of the Year (twice)",
+      " Chairperson of \"AVPA\" Africa Venture Philanthropy Alliance.",
+    ],
+    stats: [
+      { value: 40, label: "Years Experience", suffix: "+" },
+      { value: 45, label: "Transactions Led", suffix: "+" },
+      { value: 6, label: "Core Competencies" }
+    ]
   },
   {
     slug: "robert-parring",
     name: "Robert Parring",
-    role: "Investment Director",
-    bio: "Leads deal origination and portfolio strategy.",
+    bio: "Leads corporate strategy, M&A, and ICT compliance across the ParEquity group.",
     image: robert,
-    division: "ParEquity",
-    divisionPath: "/parequity",
     fullBio: [
-      "Sarah Ndlovu is the Investment Director at ParEquity, responsible for leading deal origination, due diligence, and portfolio strategy across the fund's investments. She brings a sharp analytical lens and a deep understanding of emerging market dynamics.",
-      "Before joining ParEquity, Sarah worked at a top-tier management consulting firm and later transitioned into principal investing, where she developed expertise in financial modelling, sector analysis, and stakeholder management.",
-      "Sarah holds a Master's in Finance from the University of the Witwatersrand and is a CFA Charterholder. She is passionate about backing founders who are building sustainable, high-impact businesses.",
-    ], expertise: [
-    "Deal Origination",
-    "Cross-Border Transactions",
-    "Portfolio Strategy",
-    "Regulatory Structuring",
-    "Financial Modelling",
-    "Capital Allocation"
-  ],
-
-  achievements: [
-    "Led transactions exceeding $2 billion in aggregate value",
-    "Expanded fund presence into 3 new markets",
-    "Implemented institutional investment committee framework",
-    "Recognized industry thought leader in emerging market PE"
-  ],
-
-  stats: [
-    { value: 18, label: "Years Experience", suffix: "+" },
-    { value: 45, label: "Transactions Led", suffix: "+" },
-    { value: 6, label: "Core Competencies" }
-  ]
-
-  },
-  {
-    slug: "marlon-parring",
-    name: "Marlon Parring",
-    role: "Partner",
-    bio: "Focused on operational value creation across the portfolio.",
-    image: marlon,
-    division: "ParEquity",
-    divisionPath: "/parequity",
-    fullBio: [
-      "Michael Chen is a Partner at ParEquity, where he leads operational value creation initiatives across the portfolio. His focus is on helping management teams implement strategic improvements that drive growth and operational efficiency.",
-      "Michael has extensive experience in operations management, having previously served as COO at a mid-market industrial group. He brings hands-on expertise in supply chain optimisation, digital transformation, and organisational design.",
-      "He holds an MBA from INSEAD and a degree in Industrial Engineering from the University of Hong Kong. Michael believes that the best investments are built on strong operational foundations and aligned incentives.",
+      "Robert Parring is a commercial lawyer and corporate strategist, bringing a rare blend of legal mastery, ICT expertise, and business acumen to high-stakes corporate transactions. He leads strategy, mergers & acquisitions, and regulatory compliance across the ParEquity group.",
+      "Previously, Robert held senior legal roles at Dentons and Bowmans, advancing from Candidate Attorney to Partner in under eight years. His work spans complex cross-border transactions, corporate restructuring, and ICT regulatory compliance for major clients including Amazon, SITA, and AliExpress.",
+      "Robert began his career in operational leadership roles at NTI Security Solutions before transitioning into law, gaining global exposure and strategic insight. He holds dual degrees in Commerce (BCom Information Systems) and Law (LLB), reflecting his multidisciplinary expertise."
     ],
-     expertise: [
-    "Deal Origination",
-    "Cross-Border Transactions",
-    "Portfolio Strategy",
-    "Regulatory Structuring",
-    "Financial Modelling",
-    "Capital Allocation"
-  ],
+    expertise: [
+      "Mergers & Acquisitions",
+      "Corporate & Commercial Law",
+      "Technology & Telecommunications Compliance",
+      "Cross-Border Transactions",
+      "Strategic Project Management",
+      "Regulatory Compliance"
+    ],
+    achievements: [
+      "Led transactions exceeding $4 billion in aggregate value",
+      "Managed high-profile ICT and corporate acquisitions, including Draslovka, Old Mutual, and WIOCC",
+      "Implemented regulatory compliance frameworks for Amazon, SITA, and AliExpress",
+      "Rapidly advanced to Partner at a global law firm in under eight years"
+    ],
+    stats: [
+      { value: 18, label: "Years Experience", suffix: "+" },
+      { value: 45, label: "Transactions Led", suffix: "+" },
+      { value: 6, label: "Core Competencies" }
+    ]
+  }
+];
 
-  achievements: [
-    "Led transactions exceeding $2 billion in aggregate value",
-    "Expanded fund presence into 3 new markets",
-    "Implemented institutional investment committee framework",
-    "Recognized industry thought leader in emerging market PE"
+// Division-specific roles for team members
+export const divisionRoles: { [key: string]: DivisionRole[] } = {
+  "patrick-parring": [
+    { role: "Founder", division: "ParEquity", divisionPath: "/parequity" },
+    { role: "Chairperson", division: "Anthuri Fund", divisionPath: "/anthuri-fund" },
+    { role: "Director", division: "Parvest", divisionPath: "/parvest" }
   ],
-
-  stats: [
-    { value: 18, label: "Years Experience", suffix: "+" },
-    { value: 45, label: "Transactions Led", suffix: "+" },
-    { value: 6, label: "Core Competencies" }
+  "robert-parring": [
+    { role: "CEO", division: "ParEquity", divisionPath: "/parequity" },
+    { role: "Director", division: "Anthuri Fund", divisionPath: "/anthuri-fund" },
+    { role: "Director", division: "Parvest", divisionPath: "/parvest" }
   ]
+};
 
-  },
+// Helper function to create team member with division-specific role
+function createTeamMember(base: BaseTeamMember, role: DivisionRole): TeamMember {
+  return {
+    ...base,
+    role: role.role,
+    division: role.division,
+    divisionPath: role.divisionPath
+  };
+}
+
+export const parequityTeam: TeamMember[] = [
+  createTeamMember(
+    baseTeamMembers.find(m => m.slug === "patrick-parring")!,
+    divisionRoles["patrick-parring"].find(r => r.division === "ParEquity")!
+  ),
+  createTeamMember(
+    baseTeamMembers.find(m => m.slug === "robert-parring")!,
+    divisionRoles["robert-parring"].find(r => r.division === "ParEquity")!
+  )
 ];
 
 export const anthuriTeam: TeamMember[] = [
-  {
-    slug: "patrick-parring",
-    name: "Patrick Parring",
-    role: "Fund Manager",
-    bio: "Specialist in sustainable infrastructure and energy transition.",
-    image: patrick,
-    division: "Anthuri Fund",
-    divisionPath: "/anthuri-fund",
-    fullBio: [
-      "Lerato Molefe is the Fund Manager of Anthuri Fund, overseeing the fund's investment strategy and portfolio of sustainable infrastructure assets. She is a recognised leader in impact investing and energy transition finance.",
-      "Lerato has spent over 15 years working at the intersection of infrastructure development and sustainable finance. She previously led the infrastructure desk at a major development finance institution, where she structured and executed investments in renewable energy, water, and transport.",
-      "She holds a Master's in Development Finance from the University of Stellenbosch and is a regular speaker at industry conferences on the role of private capital in Africa's energy transition.",
-    ],
-     expertise: [
-    "Deal Origination",
-    "Cross-Border Transactions",
-    "Portfolio Strategy",
-    "Regulatory Structuring",
-    "Financial Modelling",
-    "Capital Allocation"
-  ],
-
-  achievements: [
-    "Led transactions exceeding $2 billion in aggregate value",
-    "Expanded fund presence into 3 new markets",
-    "Implemented institutional investment committee framework",
-    "Recognized industry thought leader in emerging market PE"
-  ],
-
-  stats: [
-    { value: 18, label: "Years Experience", suffix: "+" },
-    { value: 45, label: "Transactions Led", suffix: "+" },
-    { value: 6, label: "Core Competencies" }
-  ]
-
-  },
-  {
-    slug: "robert-parring",
-    name: "Robert Parring",
-    role: "Investment Analyst",
-    bio: "Focused on impact measurement and ESG integration.",
-    image: robert,
-    division: "Anthuri Fund",
-    divisionPath: "/anthuri-fund",
-    fullBio: [
-      "David Kruger is an Investment Analyst at Anthuri Fund, where he supports the investment process with a particular focus on impact measurement, ESG integration, and financial analysis. He plays a key role in evaluating new opportunities and monitoring portfolio performance.",
-      "David has a background in environmental science and finance, giving him a unique perspective on the intersection of sustainability and investment returns. He is skilled in building impact frameworks that align with international reporting standards.",
-      "He holds a BCom (Honours) in Financial Analysis from the University of Pretoria and is currently pursuing his CFA designation. David is passionate about deploying capital into projects that deliver measurable environmental and social outcomes.",
-    ],
-     expertise: [
-    "Deal Origination",
-    "Cross-Border Transactions",
-    "Portfolio Strategy",
-    "Regulatory Structuring",
-    "Financial Modelling",
-    "Capital Allocation"
-  ],
-
-  achievements: [
-    "Led transactions exceeding $2 billion in aggregate value",
-    "Expanded fund presence into 3 new markets",
-    "Implemented institutional investment committee framework",
-    "Recognized industry thought leader in emerging market PE"
-  ],
-
-  stats: [
-    { value: 18, label: "Years Experience", suffix: "+" },
-    { value: 45, label: "Transactions Led", suffix: "+" },
-    { value: 6, label: "Core Competencies" }
-  ]
-
-  },
+  createTeamMember(
+    baseTeamMembers.find(m => m.slug === "patrick-parring")!,
+    divisionRoles["patrick-parring"].find(r => r.division === "Anthuri Fund")!
+  ),
+  createTeamMember(
+    baseTeamMembers.find(m => m.slug === "robert-parring")!,
+    divisionRoles["robert-parring"].find(r => r.division === "Anthuri Fund")!
+  ),
   {
     slug: "enrico-cupido",
     name: "Enrico Cupido",
-    role: "Investment Analyst",
-    bio: "Focused on impact measurement and ESG integration.",
+    role: "Director",
+    bio: "Leads strategic advisory, stakeholder engagement, and business transformation",
     image: enrico,
     division: "Anthuri Fund",
     divisionPath: "/anthuri-fund",
     fullBio: [
-      "David Kruger is an Investment Analyst at Anthuri Fund, where he supports the investment process with a particular focus on impact measurement, ESG integration, and financial analysis. He plays a key role in evaluating new opportunities and monitoring portfolio performance.",
-      "David has a background in environmental science and finance, giving him a unique perspective on the intersection of sustainability and investment returns. He is skilled in building impact frameworks that align with international reporting standards.",
-      "He holds a BCom (Honours) in Financial Analysis from the University of Pretoria and is currently pursuing his CFA designation. David is passionate about deploying capital into projects that deliver measurable environmental and social outcomes.",
+      "Enrico Cupido is the Managing Director at EJC Consulting, where he leads strategic advisory, stakeholder engagement, and business transformation initiatives for a variety of clients across finance, banking, and SME sectors.",
+    "He has extensive experience in business development, communications, and organisational optimisation, providing guidance on strategic growth, operational efficiency, and sustainable business practices.",
+    "Enrico holds a Middle Management Program certification from GIBS, a National Diploma in Education, and multiple financial qualifications including RE5, Banking, and Wealth Management certifications. He is also an accredited business advisor with SAIPA and IBASA."
     ],
-     expertise: [
-    "Deal Origination",
-    "Cross-Border Transactions",
-    "Portfolio Strategy",
-    "Regulatory Structuring",
-    "Financial Modelling",
-    "Capital Allocation"
-  ],
-
-  achievements: [
-    "Led transactions exceeding $2 billion in aggregate value",
-    "Expanded fund presence into 3 new markets",
-    "Implemented institutional investment committee framework",
-    "Recognized industry thought leader in emerging market PE"
-  ],
-
-  stats: [
-    { value: 18, label: "Years Experience", suffix: "+" },
-    { value: 45, label: "Transactions Led", suffix: "+" },
+    expertise: [
+    "Strategic Advisory",
+    "Stakeholder Engagement",
+    "Business Development",
+    "Operational Optimisation",
+    "Financial & Regulatory Compliance",
+    "SME Mentorship"
+    ],
+    achievements: [
+    "Led strategic transformation projects for multiple SME and corporate clients",
+    "Accredited Business Advisor with SAIPA and IBASA",
+    "Facilitated growth and market expansion initiatives for financial services clients",
+    "Established EJC Consulting as a trusted national consulting firm"
+    ],
+    stats: [
+    { value: 15, label: "Years Experience", suffix: "+" },
+    { value: 50, label: "Clients Advised", suffix: "+" },
     { value: 6, label: "Core Competencies" }
-  ]
-
+    ]
   },
   {
-    slug: "sylvester-albanie",
-    name: "Sylvester Albanie",
-    role: "Portfolio Manager",
-    bio: "Oversees asset management and stakeholder engagement.",
-    image: sly,
-    division: "Anthuri Fund",
-    divisionPath: "/anthuri-fund",
-    fullBio: [
-      "Amara Osei is the Portfolio Manager at Anthuri Fund, responsible for overseeing asset management, performance reporting, and stakeholder engagement across the fund's portfolio of sustainable infrastructure investments.",
-      "With a background in project finance and asset management, Amara brings deep operational expertise to Anthuri's portfolio companies. She previously managed a portfolio of renewable energy assets across West and Southern Africa.",
-      "Amara holds an MSc in Finance from the London School of Economics and a BA in Economics from the University of Ghana. She is committed to building transparent, high-performing portfolios that generate lasting impact.",
-    ],
-     expertise: [
-    "Deal Origination",
-    "Cross-Border Transactions",
-    "Portfolio Strategy",
-    "Regulatory Structuring",
-    "Financial Modelling",
-    "Capital Allocation"
+  slug: "sylvester-albanie",
+  name: "Sylvester Albanie",
+  role: "Director",
+  bio: "Leads fundraising, dealmaking, and post-investment value creation across private and listed markets.",
+  image: sly,
+  division: "Anthuri Fund",
+  divisionPath: "/anthuri-fund",
+  fullBio: [
+    "Sylvester Albanie is an Investment Principal at Anthuri Fund, with extensive experience across banking, private equity, fund management, and listed-market transactions. His work spans the full investment lifecycle, from origination and structuring to execution and post-investment oversight.",
+    "He has invested across start-ups, SMEs, property, and mid-market transactions, and has led mergers, acquisitions, and disposals in the listed space. Sylvester has also served as a pension fund trustee and brings strong governance and risk oversight to portfolio companies.",
+    "At Anthuri, Sylvester is responsible for fundraising, operational oversight, and deal execution, with active board-level involvement post-investment. In his personal capacity, he manages listed equity investments for his family and serves on the Boland Cricket Board."
   ],
-
+  expertise: [
+    "Private Equity",
+    "Fundraising",
+    "Deal Origination & Execution",
+    "Mergers & Acquisitions",
+    "Listed Market Transactions",
+    "Board & Governance Oversight",
+    "SME & Mid-Market Investing"
+  ],
   achievements: [
-    "Led transactions exceeding $2 billion in aggregate value",
-    "Expanded fund presence into 3 new markets",
-    "Implemented institutional investment committee framework",
-    "Recognized industry thought leader in emerging market PE"
+    "Led and executed private and listed-market M&A transactions",
+    "Managed investments across start-ups, SMEs, property, and mid-market assets",
+    "Served as pension fund trustee with fiduciary oversight responsibilities",
+    "Active board participation across portfolio companies",
+    "Contributed to governance and strategy as a Boland Cricket Board member"
   ],
-
   stats: [
-    { value: 18, label: "Years Experience", suffix: "+" },
-    { value: 45, label: "Transactions Led", suffix: "+" },
-    { value: 6, label: "Core Competencies" }
+    { value: 15, label: "Years Experience", suffix: "+" },
+    { value: 20, label: "Transactions & Investments" },
+    { value: 7, label: "Core Investment Areas" }
   ]
-
-  },
+}
 ];
 
 export const parvestTeam: TeamMember[] = [
-  {
-    slug: "patrick-parring",
-    name: "Patrick Parring",
-    role: "Managing Partner",
-    bio: "Serial investor focused on technology and growth equity.",
-    image: patrick,
-    division: "Parvest",
-    divisionPath: "/parvest",
-    fullBio: [
-      "Thomas van der Berg is the Managing Partner of Parvest, leading the fund's growth equity strategy with a focus on technology-enabled businesses. He has backed multiple category-defining companies from growth stage through to exit.",
-      "Thomas has over 18 years of experience in venture capital and growth equity, with a track record spanning fintech, enterprise software, and digital health. Prior to Parvest, he was a Partner at a leading European growth fund.",
-      "He holds an MBA from Stanford Graduate School of Business and a BSc in Computer Science from Delft University of Technology. Thomas is passionate about partnering with ambitious founders and helping them build global businesses.",
-    ],
-     expertise: [
-    "Deal Origination",
-    "Cross-Border Transactions",
-    "Portfolio Strategy",
-    "Regulatory Structuring",
-    "Financial Modelling",
-    "Capital Allocation"
+  createTeamMember(
+    baseTeamMembers.find(m => m.slug === "patrick-parring")!,
+    divisionRoles["patrick-parring"].find(r => r.division === "Parvest")!
+  ),
+  createTeamMember(
+    baseTeamMembers.find(m => m.slug === "robert-parring")!,
+    divisionRoles["robert-parring"].find(r => r.division === "Parvest")!
+  ),
+ {
+  slug: "marlon-parring",
+  name: "Marlon Parring",
+  role: "Director",
+  bio: "Leads strategic growth, operations and business development across technology, property and infrastructure sectors.",
+  image: marlon,
+  division: "Parvest",
+  divisionPath: "/parvest",
+  fullBio: [
+    "Marlon Parring is a seasoned commercial leader with experience driving growth, operations, and business development in technology, property and infrastructure sectors. He currently serves as Commercial Director at NTI Solutions, where he has led strategic expansion and enhanced service offerings across building automation and electronic solutions.",
+    "Previously, Marlon held executive operational leadership roles including Chief Operating Officer at Par Equity, where he oversaw group-wide operations and helped strengthen the firm’s presence in the investment community. His leadership has bridged corporate strategy with hands-on execution.",
+    "Beyond corporate leadership, Marlon has been active in the commercial property sector, including brokerage and directorial roles, and has contributed through industry associations like the South African Property Owners Association (SAPOA). He is also known for mentoring emerging business leaders and advocating for youth in business through roles with organisations like Young Business South Africa."
   ],
-
+  expertise: [
+    "Strategic Growth & Business Development",
+    "Operations Leadership",
+    "Technology & Commercial Solutions",
+    "Infrastructure & Property Sector Expertise",
+    "Corporate Strategy",
+    "Client & Stakeholder Engagement",
+    "Mentorship & Leadership Development"
+  ],
   achievements: [
-    "Led transactions exceeding $2 billion in aggregate value",
-    "Expanded fund presence into 3 new markets",
-    "Implemented institutional investment committee framework",
-    "Recognized industry thought leader in emerging market PE"
+    "Steered company growth and expansion initiatives at NTI Solutions",
+    "Oversaw operations and commercial strategy as COO at Par Equity",
+    "Contributed to property sector leadership through SAPOA roles",
+    "Mentored young professionals through Young Business South Africa leadership involvement",
+    "Built strategic partnerships across investment, technology and property markets"
   ],
-
   stats: [
-    { value: 18, label: "Years Experience", suffix: "+" },
-    { value: 45, label: "Transactions Led", suffix: "+" },
-    { value: 6, label: "Core Competencies" }
+    { value: 15, label: "Years Experience", suffix: "+" },
+    { value: 3, label: "Sector Domains" },
+    { value: 7, label: "Core Competencies" }
   ]
-
-  },
-  {
-    slug: "robert-parring",
-    name: "Robert Parring",
-    role: "Principal",
-    bio: "Leads venture investments across fintech and healthtech.",
-    image: robert,
-    division: "Parvest",
-    divisionPath: "/parvest",
-    fullBio: [
-      "Priya Naidoo is a Principal at Parvest, where she leads venture and growth-stage investments across fintech, healthtech, and digital platforms. She is known for her rigorous approach to market analysis and her ability to identify emerging category leaders.",
-      "Before joining Parvest, Priya worked in investment banking and later moved into venture capital, where she developed a deep network across the African and Asian startup ecosystems. She has been involved in numerous successful growth-stage transactions.",
-      "Priya holds a Master's in Business Administration from the Indian Institute of Management Bangalore and a BCom from the University of KwaZulu-Natal. She is a mentor to early-stage founders and an advocate for diversity in the venture industry.",
-    ],
-     expertise: [
-    "Deal Origination",
-    "Cross-Border Transactions",
-    "Portfolio Strategy",
-    "Regulatory Structuring",
-    "Financial Modelling",
-    "Capital Allocation"
-  ],
-
-  achievements: [
-    "Led transactions exceeding $2 billion in aggregate value",
-    "Expanded fund presence into 3 new markets",
-    "Implemented institutional investment committee framework",
-    "Recognized industry thought leader in emerging market PE"
-  ],
-
-  stats: [
-    { value: 18, label: "Years Experience", suffix: "+" },
-    { value: 45, label: "Transactions Led", suffix: "+" },
-    { value: 6, label: "Core Competencies" }
-  ]
-
-  },
-  {
-    slug: "marlon-parring",
-    name: "Marlon Parring",
-    role: "Associate",
-    bio: "Supports deal execution and portfolio monitoring.",
-    image: marlon,
-    division: "Parvest",
-    divisionPath: "/parvest",
-    fullBio: [
-      "Lucas Ferrara is an Associate at Parvest, supporting deal execution, financial modelling, and portfolio monitoring across the fund's growth equity investments. He brings strong quantitative skills and a keen eye for emerging trends.",
-      "Lucas joined Parvest after completing his studies, having previously interned at a leading investment bank and a venture capital fund. He is skilled in financial analysis, market research, and competitive benchmarking.",
-      "He holds a Master's in Finance from Bocconi University in Milan. Lucas is passionate about technology-driven innovation and the role of private capital in scaling transformative businesses.",
-    ],
-     expertise: [
-    "Deal Origination",
-    "Cross-Border Transactions",
-    "Portfolio Strategy",
-    "Regulatory Structuring",
-    "Financial Modelling",
-    "Capital Allocation"
-  ],
-
-  achievements: [
-    "Led transactions exceeding $2 billion in aggregate value",
-    "Expanded fund presence into 3 new markets",
-    "Implemented institutional investment committee framework",
-    "Recognized industry thought leader in emerging market PE"
-  ],
-
-  stats: [
-    { value: 18, label: "Years Experience", suffix: "+" },
-    { value: 45, label: "Transactions Led", suffix: "+" },
-    { value: 6, label: "Core Competencies" }
-  ]
-
-  },
+}
 ];
 
 export const allTeamMembers: TeamMember[] = [

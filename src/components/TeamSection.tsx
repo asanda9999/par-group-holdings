@@ -26,7 +26,9 @@ const TeamSection = ({ members }: TeamSectionProps) => {
 
         <div
           className={`grid gap-10 ${
-            members.length === 4
+            members.length === 2
+              ? "grid-cols-1 sm:grid-cols-2 lg:max-w-4xl lg:mx-auto"
+              : members.length === 4
               ? "grid-cols-1 sm:grid-cols-2 lg:max-w-4xl lg:mx-auto"
               : "grid-cols-1 sm:grid-cols-2 lg:grid-cols-3"
           }`}
@@ -76,7 +78,7 @@ const TeamSection = ({ members }: TeamSectionProps) => {
                   <motion.img
                     src={member.image}
                     alt={member.name}
-                    className="w-full h-full object-contain object-center"
+                    className="w-full h-full object-contain object-center filter grayscale"
                     initial={{ scale: 1.04 }}
                     whileHover={{ scale: shouldReduceMotion ? 1 : 1.08 }}
                     transition={{

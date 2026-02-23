@@ -7,7 +7,19 @@ import AnimatedCounter from "@/components/AnimatedCounter";
 
 const TeamMemberPage = () => {
   const { slug } = useParams<{ slug: string }>();
-  const member = allTeamMembers.find((m) => m.slug === slug);
+  
+  // Get current division from the URL path
+  const currentPath = window.location.pathname;
+  let currentDivision = "";
+  
+  if (currentPath.includes("/parequity")) currentDivision = "ParEquity";
+  else if (currentPath.includes("/anthuri-fund")) currentDivision = "Anthuri Fund";
+  else if (currentPath.includes("/parvest")) currentDivision = "Parvest";
+  
+  // Find team member that matches both slug and current division
+  const member = allTeamMembers.find((m) => 
+    m.slug === slug && m.division === currentDivision
+  );
 
   // Scroll to top when component mounts
   useEffect(() => {

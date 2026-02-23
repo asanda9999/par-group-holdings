@@ -15,15 +15,15 @@ const AnthuriFund = () => {
   return (
     <Layout>
       <HeroSection
-        title="ANTHURI FUND"
+        title="Anthuri Fund"
         subtitle="Impact-driven capital deployed into sustainable infrastructure and transformative growth opportunities."
         ctaText="Learn more"
         image={heroImage}
       />
       <AboutSection
         paragraphs={[
-          "Anthuri Fund deploys capital into sustainable infrastructure and businesses driving meaningful environmental and social impact. We focus on sectors where long-term structural tailwinds align with responsible investment principles.",
-          "Our approach combines institutional rigour with a deep commitment to measurable impact. We partner with management teams who are building businesses that will define the next generation of energy, infrastructure, and resource efficiency.",
+          "Anthuri Fund deploys capital into pre-vetted small and medium-sized enterprises across energy, manufacturing, agriculture, and technology. We invest where responsible stewardship meets long-term structural growth, backing businesses that deliver measurable environmental and social impact",
+          "Through disciplined capital allocation and active partnership, we foster job creation, operational resilience, and sustainable economic expansion while generating durable, risk-adjusted returns for stakeholders.",
         ]}
       />
       <PortfolioSection investments={anthuriPortfolio} />

@@ -4,7 +4,7 @@ interface ContactButtonProps {
   href?: string;
 }
 
-const ContactButton = ({ href = "mailto:info@paragongroup.com" }: ContactButtonProps) => {
+const ContactButton = ({ href = "mailto:info@parring.co.za" }: ContactButtonProps) => {
   const handleClick = () => {
     if (href.startsWith("mailto:")) {
       window.location.href = href;

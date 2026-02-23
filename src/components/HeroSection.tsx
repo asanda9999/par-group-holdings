@@ -63,12 +63,12 @@ const HeroSection = ({
       >
         <div className="max-w-none lg:max-w-4xl">
           <motion.p
-            className="text-white text-xs font-medium tracking-[0.3em] uppercase mb-8"
+            className="text-white text-xs font-medium tracking-[0.3em] mb-8"
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6, delay: 0.1, ease: "easeOut" }}
           >
-            Par Equity Group 
+            ParEquity Group 
           </motion.p>
 
           <motion.h1

@@ -11,12 +11,12 @@ const divisionLinks = [
   { label: "Anthuri", path: "/anthuri-fund" },
   { label: "ParVest", path: "/parvest" },
   
-  ,
+  
 ];
 
 // In-division content navigation (scrolls within the current page)
 const contentLinks = [
-  { label: "HOME", id: "top" as const },
+  
   { label: "ABOUT", id: "about" as const },
   { label: "PORTFOLIO", id: "portfolio" as const },
   { label: "TEAM", id: "team" as const },
@@ -45,7 +45,7 @@ const Header = () => {
     <header className="relative top-0 left-0 right-0 z-50">
       {/* Top bar: divisions */}
       <div className="w-full bg-slate-900 text-slate-100">
-        <div className="max-w-7xl mx-auto px-6 lg:px-12 h-10 flex items-center justify-center md:justify-start gap-6 text-[10px] md:text-xs tracking-[0.2em] uppercase">
+        <div className="max-w-7xl mx-auto px-6 lg:px-12 h-10 flex items-center justify-center md:justify-start gap-6 text-[10px] md:text-xs tracking-[0.2em]">
           {divisionLinks.map((link) => {
             const isActive = location.pathname.startsWith(link.path);
             return (

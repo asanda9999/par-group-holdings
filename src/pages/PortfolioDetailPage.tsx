@@ -51,7 +51,7 @@ const PortfolioDetailPage = () => {
             }}
           />
         </div>
-        <div className="absolute inset-0 bg-navy/60" />
+        <div className="absolute inset-0 bg-gradient-to-t from-gray-900/90 via-gray-900/70 to-transparent" />
         <div className="absolute inset-0 flex items-end">
           <div className="container mx-auto px-6 pb-12">
             <button

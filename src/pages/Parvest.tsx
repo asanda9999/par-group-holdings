@@ -15,15 +15,15 @@ const Parvest = () => {
   return (
     <Layout>
       <HeroSection
-        title="PARVEST"
-        subtitle="Growth capital for innovative, founder-led companies shaping the future of their industries."
+        title="ParVest"
+        subtitle="Long-term patient capital invested in responsibly governed, income-generating real estate assets, with a focus on durability, cash-flow resilience, and prudent stewardship."
         ctaText="Learn more"
         image={heroImage}
       />
       <AboutSection
         paragraphs={[
-          "Parvest invests in high-growth, founder-led companies at the intersection of innovation and execution. We back entrepreneurs with a clear vision, strong unit economics, and the ambition to build category-defining businesses.",
-          "We bring more than capital. Our team works closely with portfolio companies on strategic planning, talent acquisition, and market expansion — supporting founders through the critical stages of scaling from growth to market leadership.",
+          "ParVest (Pty) Ltd served until recently as the investment and asset holding vehicle within the group. It has since become the property investment leg of the group. It has since acquired Arden Grove Business Park what is now the crown jewel in it’s portfolio",
+          "The Group portfolio also includes both industrial and commercial properties, which are situated in Century City, Montague Gardens and Airport Industria.",
         ]}
       />
       <PortfolioSection investments={parvestPortfolio} />

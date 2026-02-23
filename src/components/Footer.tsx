@@ -19,12 +19,12 @@ const Footer = () => {
             <h3 className="text-base font-semibold">Contact Us</h3>
             <p className="text-sm text-white/80">
               <a href="tel:+27123456789" className="hover:text-white transition-colors">
-                +27 12 345 6789
+                +27 21 493 2767
               </a>
             </p>
             <p className="text-sm text-white/80">
-              <a href="mailto:info@parequitygroup.com" className="hover:text-white transition-colors">
-                info@parequitygroup.com
+              <a href="mailto:info@parring.co.za" className="hover:text-white transition-colors">
+                info@parring.co.za
               </a>
             </p>
           </div>
