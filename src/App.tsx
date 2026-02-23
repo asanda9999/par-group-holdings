@@ -15,8 +15,12 @@ const Parvest = lazy(() => import("./pages/Parvest"));
 const NotFound = lazy(() => import("./pages/NotFound"));
 const TeamMemberPage = lazy(() => import("./pages/TeamMemberPage"));
 const PortfolioDetailPage = lazy(() => import("./pages/PortfolioDetailPage"));
+const Maintenance = lazy(() => import("./pages/Maintenance"));
 
 const queryClient = new QueryClient();
+
+// Set this to true to enable maintenance mode
+const MAINTENANCE_MODE = true;
 
 const App = () => (
   <QueryClientProvider client={queryClient}>
@@ -32,17 +36,23 @@ const App = () => (
           </div>
         }>
           <Routes>
-            <Route path="/" element={<Index />} />
-            <Route path="/parequity" element={<ParEquity />} />
-            <Route path="/parequity/team/:slug" element={<TeamMemberPage />} />
-            <Route path="/parequity/portfolio/:slug" element={<PortfolioDetailPage />} />
-            <Route path="/anthuri-fund" element={<AnthuriFund />} />
-            <Route path="/anthuri-fund/team/:slug" element={<TeamMemberPage />} />
-            <Route path="/anthuri-fund/portfolio/:slug" element={<PortfolioDetailPage />} />
-            <Route path="/parvest" element={<Parvest />} />
-            <Route path="/parvest/team/:slug" element={<TeamMemberPage />} />
-            <Route path="/parvest/portfolio/:slug" element={<PortfolioDetailPage />} />
-            <Route path="*" element={<NotFound />} />
+            {MAINTENANCE_MODE ? (
+              <Route path="*" element={<Maintenance />} />
+            ) : (
+              <>
+                <Route path="/" element={<Index />} />
+                <Route path="/parequity" element={<ParEquity />} />
+                <Route path="/parequity/team/:slug" element={<TeamMemberPage />} />
+                <Route path="/parequity/portfolio/:slug" element={<PortfolioDetailPage />} />
+                <Route path="/anthuri-fund" element={<AnthuriFund />} />
+                <Route path="/anthuri-fund/team/:slug" element={<TeamMemberPage />} />
+                <Route path="/anthuri-fund/portfolio/:slug" element={<PortfolioDetailPage />} />
+                <Route path="/parvest" element={<Parvest />} />
+                <Route path="/parvest/team/:slug" element={<TeamMemberPage />} />
+                <Route path="/parvest/portfolio/:slug" element={<PortfolioDetailPage />} />
+                <Route path="*" element={<NotFound />} />
+              </>
+            )}
           </Routes>
         </Suspense>
       </BrowserRouter>
