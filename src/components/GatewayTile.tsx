@@ -9,27 +9,27 @@ interface GatewayTileProps {
 }
 
 const tileStyles = [
-  "bg-accent text-accent-foreground", // First tile now uses accent colors
+  "bg-white text-foreground", // First tile now white background
   "bg-[#0f172a] text-primary-foreground",
-  "bg-secondary text-secondary-foreground",
+  "bg-white text-foreground", // Third tile now white background
 ];
 
 const hoverStyles = [
-  "hover:bg-accent/80", // First tile now uses accent hover
+  "hover:bg-gray-50", // First tile hover
   "hover:bg-[#0f172a]/90",
-  "hover:bg-secondary/80",
+  "hover:bg-gray-50", // Third tile hover
 ];
 
 const subtextStyles = [
-  "text-accent-foreground/90", // First tile now uses accent text
+  "text-muted-foreground", // First tile text
   "text-primary-foreground/90",
-  "text-secondary-foreground/90",
+  "text-muted-foreground", // Third tile text
 ];
 
 const buttonStyles = [
-  "border-accent-foreground text-accent-foreground hover:bg-accent-foreground hover:text-white", // First tile now uses accent button
+  "border-foreground text-foreground hover:bg-foreground hover:text-white", // First tile button
   "border-primary-foreground text-primary-foreground hover:bg-primary-foreground hover:text-primary",
-  "border-secondary-foreground text-secondary-foreground hover:bg-secondary-foreground hover:text-secondary",
+  "border-foreground text-foreground hover:bg-foreground hover:text-white", // Third tile button
 ];
 
 const borderStyles = [
