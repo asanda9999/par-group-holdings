@@ -1,5 +1,6 @@
 import Layout from "@/components/Layout";
 import GatewayTile from "@/components/GatewayTile";
+import logo from "@/assets/par-logo.jpg";
 
 const tiles = [
   {
@@ -26,7 +27,7 @@ const Index = () => {
       <div className="w-full bg-white py-6 px-6 shadow-sm">
         <div className="max-w-7xl mx-auto flex justify-center items-center">
           <img 
-            src="/src/assets/par-logo.jpg" 
+            src={logo} 
             alt="Par Equity Group Logo" 
             className="h-20 md:h-32 w-auto" // Adjust height as needed
           />
