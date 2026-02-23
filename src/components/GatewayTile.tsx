@@ -9,9 +9,9 @@ interface GatewayTileProps {
 }
 
 const tileStyles = [
-  "bg-white text-foreground", // First tile now white background
+  "bg-gray-100 text-foreground", // First tile now gray background
   "bg-[#0f172a] text-primary-foreground",
-  "bg-white text-foreground", // Third tile now white background
+  "bg-gray-100 text-foreground", // Third tile now gray background
 ];
 
 const hoverStyles = [
