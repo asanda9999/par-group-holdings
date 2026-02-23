@@ -3,15 +3,43 @@ import styled from 'styled-components';
 
 const InitialLoadLoader = () => {
   const [showLoader, setShowLoader] = useState(true);
+  const [minimumTimeElapsed, setMinimumTimeElapsed] = useState(false);
 
   useEffect(() => {
-    // Hide loader after initial content loads
-    const timer = setTimeout(() => {
-      setShowLoader(false);
-    }, 800); // 800ms for initial load effect
+    // Track when page is actually ready
+    const handleLoad = () => {
+      // Show minimum 300ms loader for smooth transition
+      const minTimer = setTimeout(() => {
+        setMinimumTimeElapsed(true);
+      }, 300);
+      
+      // Hide loader when both conditions are met
+      const checkReady = () => {
+        if (minimumTimeElapsed && document.readyState === 'complete') {
+          setShowLoader(false);
+        }
+      };
 
-    return () => clearTimeout(timer);
-  }, []);
+      // Check readiness periodically
+      const readyCheck = setInterval(checkReady, 100);
+      
+      return () => {
+        clearTimeout(minTimer);
+        clearInterval(readyCheck);
+      };
+    };
+
+    // Start checking when DOM is loaded
+    if (document.readyState === 'loading') {
+      document.addEventListener('DOMContentLoaded', handleLoad);
+    } else {
+      handleLoad();
+    }
+
+    return () => {
+      document.removeEventListener('DOMContentLoaded', handleLoad);
+    };
+  }, [minimumTimeElapsed]);
 
   if (!showLoader) return null;
 
