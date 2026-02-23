@@ -1,97 +1,140 @@
+// src/components/GatewayTile.tsx
 import { Link } from "react-router-dom";
-import { motion } from "framer-motion";
+import { motion, Variants, useReducedMotion } from "framer-motion";
 
 interface GatewayTileProps {
   title: string;
   descriptor: string;
   to: string;
-  index: number;
 }
 
 const tileStyles = [
-  "bg-gray-100 text-foreground", // First tile now gray background
-  "bg-[#0f172a] text-primary-foreground",
-  "bg-gray-100 text-foreground", // Third tile now gray background
+  "bg-[#f8f9fb] text-[#0b0f19]",
+  "bg-gradient-to-b from-[#0b1324] to-[#0f1e3d] text-white",
+  "bg-[#f8f9fb] text-[#0b0f19]",
 ];
 
-const hoverStyles = [
-  "hover:bg-gray-50", // First tile hover
-  "hover:bg-[#0f172a]/90",
-  "hover:bg-gray-50", // Third tile hover
-];
+// Apple-like entrance (staggered by the parent container)
+const tileVariants: Variants = {
+  hidden: {
+    opacity: 0,
+    y: 24,
+    filter: "blur(8px)",
+  },
+  show: {
+    opacity: 1,
+    y: 0,
+    filter: "blur(0px)",
+    transition: {
+      duration: 1.15,
+      ease: [0.16, 1, 0.3, 1] as const,
+    },
+  },
+};
 
-const subtextStyles = [
-  "text-muted-foreground", // First tile text
-  "text-primary-foreground/90",
-  "text-muted-foreground", // Third tile text
-];
+const GatewayTile = ({
+  title,
+  descriptor,
+  to,
+  index,
+}: GatewayTileProps & { index: number }) => {
+  const reduceMotion = useReducedMotion();
 
-const buttonStyles = [
-  "border-foreground text-foreground hover:bg-foreground hover:text-white", // First tile button
-  "border-primary-foreground text-primary-foreground hover:bg-primary-foreground hover:text-primary",
-  "border-foreground text-foreground hover:bg-foreground hover:text-white", // Third tile button
-];
+  let mainTitle: string;
+  let subTitle: string;
 
-const borderStyles = [
-  "md:border-l md:border-r border-t md:border-t-0 border-border", // First tile now has borders
-  "",
-  "border-t md:border-t-0 border-border",
-];
-
-const GatewayTile = ({ title, descriptor, to, index }: GatewayTileProps) => {
-  // Split title into two parts for the two-line display
-  // Special case: keep "Anthuri Fund" on the same line
-  let mainTitle, subTitle;
   if (title === "Anthuri Fund") {
     mainTitle = title;
     subTitle = "";
   } else {
-    const titleParts = title.split(' ');
+    const titleParts = title.split(" ");
     mainTitle = titleParts[0];
-    subTitle = titleParts.slice(1).join(' ');
+    subTitle = titleParts.slice(1).join(" ");
   }
+
+  const isDark = index === 1;
 
   return (
     <motion.div
-      whileHover={{
-        scaleY: 1.04,
-        y: -8,
-        boxShadow: "0 20px 40px rgba(0,0,0,0.15)",
-        zIndex: 10,
-        transition: {
-          y: {
-            duration: 0.3,
-            ease: "easeOut"
-          },
-          boxShadow: {
-            duration: 0.3,
-            ease: "easeOut"
-          }
-        }
-      }}
-      initial={{ scale: 1, zIndex: 1 }}
+      variants={tileVariants}
+      whileHover={
+        reduceMotion
+          ? undefined
+          : {
+              y: -4,
+              boxShadow: "0 40px 100px rgba(0,0,0,0.08)",
+              transition: {
+                duration: 0.45,
+                ease: [0.16, 1, 0.3, 1] as const,
+              },
+            }
+      }
+      className="relative h-full"
     >
       <Link
         to={to}
-        className={`h-full w-full group flex flex-col items-center justify-center p-8 md:p-10 lg:p-14 text-center transition-all duration-300 ${tileStyles[index]} ${hoverStyles[index]} ${borderStyles[index]}`}
+        aria-label={`Open ${title}`}
+        className={[
+          "group relative",
+          "flex flex-col items-center justify-center text-center",
+          "h-full w-full", // critical: fill the grid cell
+          "p-12 md:p-16 lg:p-24",
+          "transition-all duration-500 ease-[cubic-bezier(0.16,1,0.3,1)]",
+          "focus:outline-none focus-visible:ring-2 focus-visible:ring-offset-2",
+          isDark
+            ? "focus-visible:ring-white/60 focus-visible:ring-offset-[#0b1324]"
+            : "focus-visible:ring-black/30 focus-visible:ring-offset-white",
+          tileStyles[index],
+        ].join(" ")}
       >
-        <div className="flex flex-col items-center space-y-6 max-w-md">
-          <div className="space-y-2">
-            <h1 className="text-3xl md:text-4xl lg:text-5xl font-light">
+        {/* Subtle premium sheen overlay */}
+        <span
+          aria-hidden="true"
+          className={[
+            "pointer-events-none absolute inset-0 opacity-0 group-hover:opacity-100",
+            "transition-opacity duration-700 ease-[cubic-bezier(0.16,1,0.3,1)]",
+            isDark
+              ? "bg-[radial-gradient(1200px_600px_at_50%_-20%,rgba(255,255,255,0.12),transparent_60%)]"
+              : "bg-[radial-gradient(1200px_600px_at_50%_-20%,rgba(0,0,0,0.06),transparent_60%)]",
+          ].join(" ")}
+        />
+
+        <div className="relative flex flex-col items-center space-y-8 max-w-lg">
+          <div className="space-y-3">
+            <h1 className="text-4xl md:text-5xl lg:text-6xl font-light tracking-[-0.02em] leading-[1.05] whitespace-nowrap">
               {mainTitle}
             </h1>
-            <h2 className="text-xl md:text-2xl lg:text-3xl font-normal uppercase">
-              {subTitle}
-            </h2>
+
+            {subTitle && (
+              <h2 className="text-lg md:text-xl lg:text-2xl font-medium tracking-[0.08em] uppercase opacity-80">
+                {subTitle}
+              </h2>
+            )}
           </div>
-          
-          <p className={`text-sm md:text-base leading-relaxed text-center ${subtextStyles[index]}`}>
+
+          <p
+            className={[
+              "text-sm md:text-base leading-relaxed max-w-md",
+              isDark ? "text-white/80" : "text-[#4b5563]",
+            ].join(" ")}
+          >
             {descriptor}
           </p>
-          
-          <button className={`px-6 py-3 border rounded-md font-semibold text-sm uppercase tracking-wide transition-all duration-300 ${buttonStyles[index]}`}>
-            Learn More
-          </button>
+
+          {/* Styled as button (no nested interactive elements inside Link) */}
+          <span
+            className={[
+              "mt-4 inline-flex items-center justify-center",
+              "px-8 py-3 rounded-full text-xs tracking-[0.2em]",
+              "font-medium border transition-all duration-500",
+              "backdrop-blur-sm",
+              isDark
+                ? "border-white/30 text-white group-hover:bg-white group-hover:text-[#0b1324]"
+                : "border-black/20 text-black group-hover:bg-black group-hover:text-white",
+            ].join(" ")}
+          >
+            LEARN MORE
+          </span>
         </div>
       </Link>
     </motion.div>
