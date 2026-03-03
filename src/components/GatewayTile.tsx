@@ -1,5 +1,6 @@
 // src/components/GatewayTile.tsx
 import { Link } from "react-router-dom";
+import { ArrowRight } from "lucide-react";
 import { motion, Variants, useReducedMotion } from "framer-motion";
 
 interface GatewayTileProps {
@@ -16,19 +17,12 @@ const tileStyles = [
 
 // Apple-like entrance (staggered by the parent container)
 const tileVariants: Variants = {
-  hidden: {
-    opacity: 0,
-    y: 24,
-    filter: "blur(8px)",
-  },
+  hidden: { opacity: 0, y: 18, filter: "blur(10px)" },
   show: {
     opacity: 1,
     y: 0,
     filter: "blur(0px)",
-    transition: {
-      duration: 1.15,
-      ease: [0.16, 1, 0.3, 1] as const,
-    },
+    transition: { duration: 1.05, ease: [0.16, 1, 0.3, 1] as const },
   },
 };
 
@@ -54,32 +48,32 @@ const GatewayTile = ({
 
   const isDark = index === 1;
 
+  // Hairline dividers (panel feel, not boxed cards)
+  const divider =
+    index === 0
+      ? "lg:border-r lg:border-white/10"
+      : index === 1
+      ? "lg:border-r lg:border-white/10"
+      : "";
+
   return (
     <motion.div
       variants={tileVariants}
-      whileHover={
-        reduceMotion
-          ? undefined
-          : {
-              y: -4,
-              boxShadow: "0 40px 100px rgba(0,0,0,0.08)",
-              transition: {
-                duration: 0.45,
-                ease: [0.16, 1, 0.3, 1] as const,
-              },
-            }
-      }
-      className="relative h-full"
+      className={[
+        "relative",
+        "min-h-[68vh] lg:min-h-[78vh]", // ✅ taller panels
+        divider,
+      ].join(" ")}
     >
       <Link
         to={to}
         aria-label={`Open ${title}`}
         className={[
-          "group relative",
-          "flex flex-col items-center justify-center text-center",
-          "h-full w-full", // critical: fill the grid cell
-          "p-12 md:p-16 lg:p-24",
-          "transition-all duration-500 ease-[cubic-bezier(0.16,1,0.3,1)]",
+          "group relative isolate",
+          "flex h-full w-full",
+          "items-center justify-center text-center",
+          "px-10 py-16 md:px-14 lg:px-16", // less “boxed”
+          "transition-transform duration-700 ease-[cubic-bezier(0.16,1,0.3,1)]",
           "focus:outline-none focus-visible:ring-2 focus-visible:ring-offset-2",
           isDark
             ? "focus-visible:ring-white/60 focus-visible:ring-offset-[#0b1324]"
@@ -87,55 +81,108 @@ const GatewayTile = ({
           tileStyles[index],
         ].join(" ")}
       >
-        {/* Subtle premium sheen overlay */}
+        {/* Subtle vignette to add depth (quiet luxury) */}
         <span
           aria-hidden="true"
           className={[
-            "pointer-events-none absolute inset-0 opacity-0 group-hover:opacity-100",
-            "transition-opacity duration-700 ease-[cubic-bezier(0.16,1,0.3,1)]",
+            "pointer-events-none absolute inset-0 -z-10",
             isDark
-              ? "bg-[radial-gradient(1200px_600px_at_50%_-20%,rgba(255,255,255,0.12),transparent_60%)]"
-              : "bg-[radial-gradient(1200px_600px_at_50%_-20%,rgba(0,0,0,0.06),transparent_60%)]",
+              ? "bg-[radial-gradient(900px_520px_at_50%_20%,rgba(255,255,255,0.10),transparent_60%)]"
+              : "bg-[radial-gradient(900px_520px_at_50%_20%,rgba(0,0,0,0.06),transparent_60%)]",
           ].join(" ")}
         />
 
-        <div className="relative flex flex-col items-center space-y-8 max-w-lg">
-          <div className="space-y-3">
-            <h1 className="text-4xl md:text-5xl lg:text-6xl font-light tracking-[-0.02em] leading-[1.05] whitespace-nowrap">
+        {/* Soft hover sheen (very subtle) */}
+        <span
+          aria-hidden="true"
+          className={[
+            "pointer-events-none absolute inset-0 -z-10 opacity-0 group-hover:opacity-100",
+            "transition-opacity duration-700 ease-[cubic-bezier(0.16,1,0.3,1)]",
+            isDark
+              ? "bg-[radial-gradient(1000px_600px_at_50%_-10%,rgba(255,255,255,0.12),transparent_60%)]"
+              : "bg-[radial-gradient(1000px_600px_at_50%_-10%,rgba(0,0,0,0.05),transparent_60%)]",
+          ].join(" ")}
+        />
+
+        {/* Border glow on hover (replaces boxy shadow) */}
+        <motion.span
+          aria-hidden="true"
+          className="pointer-events-none absolute inset-0 rounded-none"
+          initial={{ opacity: 0 }}
+          whileHover={reduceMotion ? {} : { opacity: 1 }}
+          transition={{ duration: 0.6, ease: [0.16, 1, 0.3, 1] as const }}
+          style={{
+            boxShadow: isDark
+              ? "inset 0 0 0 1px rgba(255,255,255,0.10), 0 24px 80px rgba(0,0,0,0.35)"
+              : "inset 0 0 0 1px rgba(0,0,0,0.08), 0 24px 80px rgba(0,0,0,0.10)",
+          }}
+        />
+
+        {/* Micro lift (no “card shadow” vibe) */}
+        <motion.div
+          whileHover={
+            reduceMotion
+              ? undefined
+              : {
+                  y: -6,
+                  transition: { duration: 0.7, ease: [0.16, 1, 0.3, 1] as const },
+                }
+          }
+          className="relative flex flex-col items-center max-w-[34rem]"
+        >
+          {/* Typography */}
+          <div className="space-y-4">
+            <h1 className="text-5xl md:text-6xl lg:text-7xl font-light tracking-[-0.02em] leading-[1.05]">
               {mainTitle}
             </h1>
 
             {subTitle && (
-              <h2 className="text-lg md:text-xl lg:text-2xl font-medium tracking-[0.08em] uppercase opacity-80">
+              <h2 className="text-xs md:text-sm font-medium tracking-[0.32em] uppercase opacity-70">
                 {subTitle}
               </h2>
             )}
           </div>
 
+          {/* Descriptor */}
           <p
             className={[
-              "text-sm md:text-base leading-relaxed max-w-md",
-              isDark ? "text-white/80" : "text-[#4b5563]",
+              "mt-8 text-sm md:text-base leading-relaxed",
+              "max-w-[46ch]",
+              isDark ? "text-white/75" : "text-[#4b5563]",
             ].join(" ")}
           >
             {descriptor}
           </p>
 
-          {/* Styled as button (no nested interactive elements inside Link) */}
+          {/* CTA */}
           <span
             className={[
-              "mt-4 inline-flex items-center justify-center",
-              "px-8 py-3 rounded-full text-xs tracking-[0.2em]",
-              "font-medium border transition-all duration-500",
+              "mt-10 inline-flex items-center gap-2 rounded-full",
+              "px-6 py-3 text-[11px] tracking-[0.22em] uppercase font-medium",
+              "border transition-all duration-700",
               "backdrop-blur-sm",
               isDark
-                ? "border-white/30 text-white group-hover:bg-white group-hover:text-[#0b1324]"
-                : "border-black/20 text-black group-hover:bg-black group-hover:text-white",
+                ? "border-white/22 text-white bg-white/5 group-hover:bg-white/10"
+                : "border-black/12 text-black bg-black/[0.02] group-hover:bg-black/[0.04]",
             ].join(" ")}
           >
-            LEARN MORE
+            Learn More
+            <ArrowRight
+              className="h-4 w-4 transition-transform duration-700 group-hover:translate-x-0.5"
+              aria-hidden="true"
+            />
           </span>
-        </div>
+
+          {/* Micro underline divider (Apple-ish) */}
+          <span
+            aria-hidden="true"
+            className={[
+              "mt-10 h-px w-16",
+              isDark ? "bg-white/18" : "bg-black/10",
+              "opacity-70",
+            ].join(" ")}
+          />
+        </motion.div>
       </Link>
     </motion.div>
   );

@@ -6,7 +6,7 @@ const Footer = () => {
       <div className="max-w-7xl mx-auto px-6 lg:px-12 py-12">
         <div className="flex flex-col md:flex-row justify-between items-start gap-8">
           <div>
-            <h3 className="text-base font-semibold">Par Equity Group</h3>
+            <h3 className="text-base font-semibold">ParEquity Group</h3>
             <p className="mt-2 text-sm text-white/80 max-w-sm">
               A focused investment group with three distinct mandates.
             </p>
@@ -32,7 +32,7 @@ const Footer = () => {
 
         <div className="mt-12 pt-8 border-t border-border">
           <p className="text-sm text-white/80 text-center">
-            © {new Date().getFullYear()} Par Equity Group. All rights reserved.
+            © {new Date().getFullYear()} ParEquity Group. All rights reserved.
           </p>
         </div>
       </div>

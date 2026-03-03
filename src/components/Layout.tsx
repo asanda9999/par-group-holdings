@@ -1,5 +1,6 @@
 import Header from "./Header";
 import Footer from "./Footer";
+import BackToTopButton from "./BackToTopButton";
 
 interface LayoutProps {
   children: React.ReactNode;
@@ -13,6 +14,7 @@ const Layout = ({ children, showHeader = true, showFooter = true }: LayoutProps)
       {showHeader && <Header />}
       <main className="flex-1">{children}</main>
       {showFooter && <Footer />}
+      <BackToTopButton />
     </div>
   );
 };

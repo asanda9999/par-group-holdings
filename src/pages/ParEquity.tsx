@@ -16,15 +16,19 @@ const ParEquity = () => {
     <Layout>
       <HeroSection
         title="ParEquity"
-        subtitle="Long-term private equity partnerships with established businesses built on trust, alignment, and patient capital."
+        subtitle="Strategic private capital deployed with discipline — guiding infrastructure and technology platforms toward scalable growth and enduring enterprise value."
         ctaText="Learn more"
         image={heroImage}
       />
       <AboutSection
         paragraphs={[
-          "ParEquity (Pty) Ltd is the investment group, which includes inter alia investments in the transport infrastructure, and technology sectors. It provides leadership, governance, and executive direction across all subsidiary entities, ensuring consistent alignment with the founder’s legacy and the group’s mission of social impact and commercial success.",
-          "ParEquity is responsible for overseeing group strategy, stakeholder engagement, and high-level decision-making while fostering collaboration between operating companies. With its entrepreneurial spirit and agile structure, ParEquity drives innovation, expansion, and inclusive growth across South Africa and beyond.",
+          "ParEquity (Pty) Ltd is the strategic nucleus of the Group — allocating private capital across transport infrastructure and technology platforms positioned for structural expansion. We invest where operational strength, governance discipline, and long-term demand intersect.",
+          "Our involvement extends beyond capital deployment. We provide strategic oversight, executive alignment, and rigorous decision-making frameworks that enhance resilience and accelerate scalable growth.",
+          "Capital is deployed with conviction, governed with discipline, and measured against a singular objective: enduring enterprise value creation."
         ]}
+        heading="Strategic Capital,<br /> governed growth."
+        sectionLabel="ParEquity"
+        principles={["Stewardship", "Governance", "Alignment", "Enduring Value"]}
       />
       <PortfolioSection investments={parequityPortfolio} />
       <TeamSection members={parequityTeam} />

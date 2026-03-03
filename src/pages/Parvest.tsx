@@ -21,9 +21,21 @@ const Parvest = () => {
         image={heroImage}
       />
       <AboutSection
-        paragraphs={[
-          "ParVest (Pty) Ltd served until recently as the investment and asset holding vehicle within the group. It has since become the property investment leg of the group. It has since acquired Arden Grove Business Park what is now the crown jewel in it’s portfolio",
-          "The Group portfolio also includes both industrial and commercial properties, which are situated in Century City, Montague Gardens and Airport Industria.",
+       paragraphs={[
+        "ParVest acquires and operates high-quality, income-producing real estate with a singular objective: deliver stable cash flow and protect capital through every market cycle. We invest selectively, underwrite rigorously, and manage actively.",
+        "Our portfolio is anchored in strategically located industrial and commercial assets across key economic nodes — selected not for speculation, but for durability. We do not chase trends. We build resilient income platforms designed to endure."
+      ]}
+        heading="
+    Real assets,
+    <br />
+    disciplined returns.
+  </>"
+        sectionLabel="Parvest"
+        principles={[
+          "Capital Preservation",
+          "Income Discipline",
+          "Active Asset Management",
+          "Tenant Alignment"
         ]}
       />
       <PortfolioSection investments={parvestPortfolio} />

@@ -16,15 +16,23 @@ const AnthuriFund = () => {
     <Layout>
       <HeroSection
         title="Anthuri Fund"
-        subtitle="Impact-driven capital deployed into sustainable infrastructure and transformative growth opportunities."
+        subtitle="Institutional impact capital deployed into high-conviction infrastructure and growth platforms — structured to deliver measurable outcomes and resilient financial performance."
         ctaText="Learn more"
         image={heroImage}
       />
       <AboutSection
         paragraphs={[
-          "Anthuri Fund deploys capital into pre-vetted small and medium-sized enterprises across energy, manufacturing, agriculture, and technology. We invest where responsible stewardship meets long-term structural growth, backing businesses that deliver measurable environmental and social impact",
-          "Through disciplined capital allocation and active partnership, we foster job creation, operational resilience, and sustainable economic expansion while generating durable, risk-adjusted returns for stakeholders.",
+           "Anthuri Fund allocates disciplined capital into scalable businesses across energy, manufacturing, agriculture, and technology — sectors fundamental to long-term economic transformation. We invest where structural demand, operational strength, and measurable impact converge.",
+    "Our mandate integrates rigorous underwriting with active value creation. We enhance governance, strengthen operational resilience, and prioritise scalable job creation — delivering quantifiable environmental and socio-economic progress alongside durable, risk-adjusted returns."
         ]}
+        heading="Measurable impact,
+                <br />
+                sustainable growth."
+        sectionLabel="Anthuri Fund"
+        principles={[  "Measurable Outcomes",
+          "Responsible Growth",
+          "Operational Strength",
+          "Sustainable Returns"]}
       />
       <PortfolioSection investments={anthuriPortfolio} />
       <TeamSection members={anthuriTeam} />

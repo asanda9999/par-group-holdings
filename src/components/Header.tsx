@@ -28,6 +28,15 @@ const Header = () => {
   const location = useLocation();
 
   const handleScrollTo = (id: "top" | "about" | "portfolio" | "team" | "contact") => {
+    const pathParts = location.pathname.split("/").filter(Boolean);
+    const isDetailPage = pathParts[1] === "portfolio" || pathParts[1] === "team";
+    
+    if (isDetailPage) {
+      const divisionPath = `/${pathParts[0]}`; // /parequity, /anthuri-fund, /parvest
+      window.location.href = id === "top" ? divisionPath : `${divisionPath}#${id}`;
+      return;
+    }
+
     if (id === "top") {
       window.scrollTo({ top: 0, behavior: "smooth" });
       return;

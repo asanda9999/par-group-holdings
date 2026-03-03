@@ -129,8 +129,8 @@ export const divisionRoles: { [key: string]: DivisionRole[] } = {
     { role: "Director", division: "Parvest", divisionPath: "/parvest" }
   ],
   "robert-parring": [
-    { role: "CEO", division: "ParEquity", divisionPath: "/parequity" },
-    { role: "Director", division: "Anthuri Fund", divisionPath: "/anthuri-fund" },
+    { role: "Group CEO", division: "ParEquity", divisionPath: "/parequity" },
+    { role: "CEO", division: "Anthuri Fund", divisionPath: "/anthuri-fund" },
     { role: "Director", division: "Parvest", divisionPath: "/parvest" }
   ]
 };
@@ -168,7 +168,7 @@ export const anthuriTeam: TeamMember[] = [
   {
     slug: "enrico-cupido",
     name: "Enrico Cupido",
-    role: "Director",
+    role: "Investment Analyst",
     bio: "Leads strategic advisory, stakeholder engagement, and business transformation",
     image: enrico,
     division: "Anthuri Fund",
@@ -201,7 +201,7 @@ export const anthuriTeam: TeamMember[] = [
   {
   slug: "sylvester-albanie",
   name: "Sylvester Albanie",
-  role: "Director",
+  role: "Investment Analyst",
   bio: "Leads fundraising, dealmaking, and post-investment value creation across private and listed markets.",
   image: sly,
   division: "Anthuri Fund",

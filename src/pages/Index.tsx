@@ -50,7 +50,7 @@ const Index = () => {
     />
 
     <p className="text-xs tracking-[0.35em] uppercase text-neutral-500">
-      Long-Term Capital . Responsible Stewardship.
+      Building Futures - Inspiring Leaders
     </p>
 
   </div>

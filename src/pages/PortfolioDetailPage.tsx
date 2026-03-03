@@ -43,7 +43,7 @@ const PortfolioDetailPage = () => {
           <img 
             src={item.image} 
             alt={item.name} 
-            className="w-full h-full object-cover"
+            className="w-full h-full object-cover grayscale"
             loading="eager"
             style={{
               imageRendering: '-webkit-optimize-contrast',
@@ -83,6 +83,7 @@ const PortfolioDetailPage = () => {
                     {paragraph}
                   </p>
                 ))}
+                
               </div>
 
               <h2 className="font-display text-2xl font-normal text-foreground mb-6">KEY HIGHLIGHTS</h2>

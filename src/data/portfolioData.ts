@@ -15,6 +15,7 @@ import dmite from "@/assets/portfolio/dmite.jpeg";
 import abbotts from "@/assets/portfolio/ab.jpg";
 import mh from "@/assets/portfolio/mint-honey.png";
 import ap from "@/assets/portfolio/a2p.jpg";
+import ev from "@/assets/portfolio/envirosan.png";
 
 export interface PortfolioInvestment {
   slug: string;
@@ -103,17 +104,17 @@ export const parequityPortfolio: PortfolioInvestment[] = [
 
 export const anthuriPortfolio: PortfolioInvestment[] = [
   {
-    slug: "mint-honey",
-    name: "Mint and Honey",
+    slug: "T-1",
+    name: "Target Company 1",
     sector: "Food Manufacturing & Nutrition",
     description: "South African nutritional food manufacturer producing fortified cereals and blends to combat malnutrition and improve food security.",
     image: mh,
     fullDescription: [
-      "Mint & Honey (Pty) Ltd manufactures fortified cereals and nutrient-rich food products designed to address malnutrition, particularly among young children and vulnerable communities. Based in Atlantis Industrial, Western Cape, the company focuses on producing high-quality, non-GMO grain products aligned with food security goals.",
+      "The company manufactures fortified cereals and nutrient-rich food products designed to address malnutrition, particularly among young children and vulnerable communities. Based in Atlantis Industrial, Western Cape, the company focuses on producing high-quality, non-GMO grain products aligned with food security goals.",
     "Its product range includes Super Cereal Plus and other fortified maize and soy blends supplied to NGOs, school feeding schemes, and institutional feeding programmes. The company supports local agricultural value chains while contributing to socio-economic development and improved childhood nutrition outcomes.",
     ],
     divisionPath: "/anthuri-fund",
-    yearInvested: 2026,
+    yearInvested: null,
     status: "Pending",
     stats: [
   { label: "Employees", value: "2–10 (Core Team)" },
@@ -123,46 +124,46 @@ export const anthuriPortfolio: PortfolioInvestment[] = [
     ],
   },
   {
-    slug: "a2-pay",
-    name: "A2 Pay",
+    slug: "T-2",
+    name: "Target Company 2",
     sector: "Fintech",
     description: "Township-focused fintech platform enabling digital payments, POS systems, and trade finance for informal retailers.",
     image: ap,
     fullDescription: [
-       "A2 Pay is a South African fintech platform focused on digitising informal and township retail markets. The company provides point-of-sale (POS) systems, bill payment solutions, airtime and voucher services, and inventory management tools to spaza shops and independent retailers.",
-    "By leveraging transaction data and merchant insights, A2 Pay enables access to trade finance and working capital, helping small retailers formalise operations and scale sustainably. The platform also provides FMCG suppliers with real-time sales analytics, pricing intelligence, and route-to-market optimisation across underserved communities.",
+       "The company is a South African fintech platform focused on digitising informal and township retail markets. The company provides point-of-sale (POS) systems, bill payment solutions, airtime and voucher services, and inventory management tools to spaza shops and independent retailers.",
+    "By leveraging transaction data and merchant insights, The company enables access to trade finance and working capital, helping small retailers formalise operations and scale sustainably. The platform also provides FMCG suppliers with real-time sales analytics, pricing intelligence, and route-to-market optimisation across underserved communities.",
     ],
     divisionPath: "/anthuri-fund",
-    yearInvested: 2026,
+    yearInvested: null,
     status: "Pending",
     stats: [
   { label: "Jobs Supported", value: "40,000+ (via SME & Jobs Fund programs)" },
   { label: "Merchants Digitised", value: "6,000+" },
   { label: "Annual Transaction Value", value: "R2B+" },
   { label: "Local Ownership", value: "South African-founded & led" },
-  { label: "Training Hours Delivered", value: "Thousands+ via A2Pay Business School" }
+  
     ],
   },
-  {
-    slug: "biomass-one",
-    name: "Biomass One",
-    sector: "Waste-to-Energy",
-    description: "Converting agricultural waste into clean baseload energy for rural communities.",
-    image: biomassImg,
-    fullDescription: [
-      "Biomass One operates three waste-to-energy plants in Mpumalanga and Limpopo, converting sugarcane bagasse and forestry waste into reliable baseload electricity. The plants supply power to rural municipalities under long-term contracts.",
-      "Anthuri Fund's investment in 2022 funded the construction of the third plant and enabled the company to secure carbon credits under the Verified Carbon Standard.",
-    ],
-    divisionPath: "/anthuri-fund",
-    yearInvested: 2022,
-    status: "Active",
-    stats: [
-      { label: "Plants Operational", value: "3" },
-      { label: "Capacity", value: "45 MW" },
-      { label: "Homes Powered", value: "60,000+" },
-      { label: "Carbon Credits / Year", value: "120,000" },
-    ],
-  },
+{
+  slug: "T-3",
+  name: "Target Company 3",
+  sector: "Water & Sanitation Infrastructure",
+  description: "South African manufacturer of water-efficient sanitation systems addressing school and municipal infrastructure backlogs.",
+  image: ev,
+  fullDescription: [
+    "The company is a Durban-based manufacturer of low-flush and urine diversion sanitation systems designed for water-scarce and off-grid environments. The company supplies sanitation infrastructure to municipalities, provincial education departments and private sector partners across Southern Africa.",
+    "Anthuri Fund is currently evaluating a potential growth investment to support working capital, manufacturing scale-up and regional expansion. The opportunity aligns with the Fund’s mandate to back  SMEs in essential infrastructure sectors that deliver measurable social and environmental impact."
+  ],
+  divisionPath: "/anthuri-fund",
+  yearInvested: null,
+  status: "Pending",
+  stats: [
+     { label: "Years Operating", value: "20+" },
+    { label: "School Projects Completed", value: "300+" },
+    { label: "Water Saved / Flush", value: "Up to 80%" },
+    { label: "Manufacturing Facility", value: "1 (KZN)" },
+  ],
+}
 ];
 
 export const parvestPortfolio: PortfolioInvestment[] = [
@@ -170,11 +171,11 @@ export const parvestPortfolio: PortfolioInvestment[] = [
     slug: "arden-grove",
     name: "Arden Grove",
     sector: "Commercial Real Estate",
-    description: "Secure Montague Gardens office park with flexible workspace",
+    description: "Secure Milnerton office park with flexible workspace",
     image: ardin,
     fullDescription: [
-      "Arden Grove Business Park is a secure, professionally managed office park located in Montague Gardens, Cape Town. It offers flexible, modern office spaces suited to small and medium-sized businesses across various industries.",
-      "It’s a strategic commercial investment in a well-located, income-producing office property in the business node of Cape Town. Montague Gardens is a sought-after commercial and industrial hub with strong connectivity and demand from tenants.",
+      "Arden Grove Business Park is a secure, professionally managed office park located in Milnerton, Cape Town. It offers flexible, modern office spaces suited to small and medium-sized businesses across various industries.",
+      "It’s a strategic commercial investment in a well-located, income-producing office property in the business node of Cape Town.",
     ],
     divisionPath: "/parvest",
     yearInvested: 2023,
