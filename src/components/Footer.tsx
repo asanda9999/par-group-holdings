@@ -3,7 +3,7 @@ import { Link } from "react-router-dom";
 const Footer = () => {
   return (
     <footer className="bg-gradient-to-b from-[#0f1e3d] to-[#0b1324] text-white">  
-      <div className="max-w-7xl mx-auto px-6 lg:px-12 py-12">
+      <div className="max-w-7xl mx-auto px-4 lg:px-12 py-8 md:py-12">
         <div className="flex flex-col md:flex-row justify-between items-start gap-8">
           <div>
             <h3 className="text-base font-semibold">ParEquity Group</h3>
