@@ -16,7 +16,7 @@ const Parvest = () => {
     <Layout>
       <HeroSection
         title="ParVest"
-        subtitle="Long-term patient capital invested in responsibly governed, income-generating real estate assets, with a focus on durability, cash-flow resilience, and prudent stewardship."
+        subtitle="Long-term patient capital invested in responsibly governed, income-generating in industial and commercial real estate assets, with a focus on durability, cash-flow resilience, and prudent stewardship."
         ctaText="Learn more"
         image={heroImage}
       />

@@ -247,7 +247,7 @@ export const parvestTeam: TeamMember[] = [
  {
   slug: "marlon-parring",
   name: "Marlon Parring",
-  role: "Director",
+  role: "Non-Executive-Director",
   bio: "Leads strategic growth, operations and business development across technology, property and infrastructure sectors.",
   image: marlon,
   division: "Parvest",

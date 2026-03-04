@@ -194,11 +194,11 @@ export const parvestPortfolio: PortfolioInvestment[] = [
     description: "Designamite is an Atlantis Industrial–based manufacturing company producing precision plastic and semi-finished products for display, merchandising, and industrial applications.",
     image: dmite,
     fullDescription: [
-      "Designamite is a manufacturing business based in Atlantis Industrial, Cape Town, producing precision plastic and semi‑manufactured products for display, merchandising, and industrial applications. Its long history and operational footprint in the industrial sector support steady demand and diversified client relationships.",
+      "Designamite is a manufacturing business based at 12 Neil Hare road in Atlantis Industrial, Cape Town, producing precision plastic and semi‑manufactured products for display, merchandising, and industrial applications. Its long history and operational footprint in the industrial sector support steady demand and diversified client relationships.",
       "The investment thesis focuses on durable manufacturing capabilities, local industrial demand, and exposure to structured production revenue streams within a growing manufacturing hub",
     ],
     divisionPath: "/parvest",
-    yearInvested: 2022,
+    yearInvested: 2025,
     status: "Active",
  stats: [
   { label: "Years in Operation", value: "25+" },
@@ -218,8 +218,8 @@ export const parvestPortfolio: PortfolioInvestment[] = [
       "The investment thesis is anchored in recurring tuition revenue, strong brand positioning, and long-term demographic growth. This holding aligns with a defensive growth strategy focused on stable cash flows and essential-service sector exposure.",
     ],
     divisionPath: "/parvest",
-    yearInvested: 2023,
-    status: "Active",
+    yearInvested: 2009,
+    status: "Exited",
   stats: [
   { label: "Years in Operation", value: "30+" },
   { label: "Students Enrolled / Year", value: "500+" },
