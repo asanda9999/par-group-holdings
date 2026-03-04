@@ -1,5 +1,5 @@
 import { motion } from "framer-motion";
-import parLogo from "../assets/par-logo.jpg";
+import parLogo from "../assets/par-logo.svg";
 
 const Maintenance = () => {
   return (

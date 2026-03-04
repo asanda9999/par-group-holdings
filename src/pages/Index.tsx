@@ -3,7 +3,7 @@ import Layout from "@/components/Layout";
 import GatewayTile from "@/components/GatewayTile";
 import OptimizedImage from "@/components/OptimizedImage";
 import { motion } from "framer-motion";
-import logo from "@/assets/par-logo.jpg";
+import logo from "@/assets/par-logo.svg";
 
 const tiles = [
   {
@@ -33,28 +33,41 @@ const containerVariants = {
   },
 };
 
+const easePremium: [number, number, number, number] = [0.16, 1, 0.3, 1];
+
 const Index = () => {
   return (
     <Layout showHeader={false}>
-      {/* White Header Strip with Logo */}
-     <div className="w-full bg-white border-b border-neutral-200">
-  <div className="max-w-7xl mx-auto px-6 py-12 flex flex-col items-center">
-    
-    <OptimizedImage
-      src={logo}
-      alt="ParEquity Group Logo"
-      className="h-16 md:h-24 w-auto mb-6"
-      priority
-      width={220}
-      height={100}
-    />
+      {/* Premium Header Strip with Logo */}
+      <div className="w-full border-b border-neutral-200 bg-gradient-to-b from-white to-[#f8f9fb]">
+        <div className="max-w-7xl mx-auto px-6 py-16 md:py-20 flex flex-col items-center">
+          {/* Logo entrance */}
+          <motion.div
+            initial={{ opacity: 0, y: -10, filter: "blur(6px)" }}
+            animate={{ opacity: 1, y: 0, filter: "blur(0px)" }}
+            transition={{ duration: 0.95, ease: easePremium }}
+          >
+            <OptimizedImage
+              src={logo}
+              alt="ParEquity Group Logo"
+              className="h-20 md:h-28 w-auto mb-7"
+              priority
+              width={320}
+              height={150}
+            />
+          </motion.div>
 
-    <p className="text-xs tracking-[0.35em] uppercase text-neutral-500">
-      Building Futures - Inspiring Leaders
-    </p>
-
-  </div>
-</div>
+          {/* Tagline entrance */}
+          <motion.p
+            initial={{ opacity: 0, y: 6 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ delay: 0.35, duration: 0.9, ease: easePremium }}
+            className="text-[11px] md:text-xs tracking-[0.45em] uppercase text-neutral-400 font-medium"
+          >
+            Building Futures – Inspiring Leaders
+          </motion.p>
+        </div>
+      </div>
 
       {/* Full-height panels that fill the remaining space (banner + footer stay visible) */}
       <motion.div
