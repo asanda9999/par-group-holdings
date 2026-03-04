@@ -33,7 +33,7 @@ const ContactSection = ({ divisionName }: ContactSectionProps) => {
   };
 
   return (
-    <section id="contact" className="bg-background py-24 md:py-40">
+    <section id="contact" className="bg-background py-16 md:py-40">
       <div className="max-w-7xl mx-auto px-4 md:px-6 lg:px-12">
         {/* Editorial header */}
         <div className="grid grid-cols-12 items-end gap-y-6">
