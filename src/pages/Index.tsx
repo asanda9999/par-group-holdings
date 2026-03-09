@@ -3,7 +3,7 @@ import Layout from "@/components/Layout";
 import GatewayTile from "@/components/GatewayTile";
 import OptimizedImage from "@/components/OptimizedImage";
 import { motion } from "framer-motion";
-import logo from "@/assets/par-logo.svg";
+import logo from "@/assets/OG-Logo.svg";
 
 const tiles = [
   {
@@ -50,10 +50,10 @@ const Index = () => {
             <OptimizedImage
               src={logo}
               alt="ParEquity Group Logo"
-              className="h-20 md:h-28 w-auto mb-7"
+              className="h-32 md:h-48 w-auto mb-6"
               priority
-              width={320}
-              height={150}
+              width={520}
+              height={260}
             />
           </motion.div>
 

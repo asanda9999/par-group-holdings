@@ -1,5 +1,5 @@
 import { Link, useLocation } from "react-router-dom";
-import parLogo from "@/assets/par-logo.svg";
+import parLogo from "@/assets/OG-Logo.svg";
 import { useState } from "react";
 import { Menu, X } from "lucide-react";
 import { motion, AnimatePresence } from "framer-motion";

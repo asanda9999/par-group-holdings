@@ -10,9 +10,9 @@ interface GatewayTileProps {
 }
 
 const tileStyles = [
-  "bg-[#f8f9fb] text-[#0b0f19]",
-  "bg-gradient-to-b from-[#0b1324] to-[#0f1e3d] text-white",
-  "bg-[#f8f9fb] text-[#0b0f19]",
+  "bg-[linear-gradient(180deg,#ffffff_0%,#fcfcfd_100%)] text-[#0b0f19]",
+  "bg-[linear-gradient(180deg,#ffffff_0%,#fcfcfd_100%)] text-[#0b0f19]",
+  "bg-[linear-gradient(180deg,#ffffff_0%,#fcfcfd_100%)] text-[#0b0f19]",
 ];
 
 // Apple-like entrance (staggered by the parent container)
@@ -46,14 +46,11 @@ const GatewayTile = ({
     subTitle = titleParts.slice(1).join(" ");
   }
 
-  const isDark = index === 1;
-
-  // Hairline dividers (panel feel, not boxed cards)
   const divider =
     index === 0
-      ? "lg:border-r lg:border-white/10"
+      ? "lg:border-r lg:border-[#e8ebf0]"
       : index === 1
-      ? "lg:border-r lg:border-white/10"
+      ? "lg:border-r lg:border-[#e8ebf0]"
       : "";
 
   return (
@@ -61,7 +58,7 @@ const GatewayTile = ({
       variants={tileVariants}
       className={[
         "relative",
-        "min-h-[68vh] lg:min-h-[78vh]", // ✅ taller panels
+        "min-h-[68vh] lg:min-h-[78vh]",
         divider,
       ].join(" ")}
     >
@@ -72,99 +69,87 @@ const GatewayTile = ({
           "group relative isolate",
           "flex h-full w-full",
           "items-center justify-center text-center",
-          "px-10 py-16 md:px-14 lg:px-16", // less “boxed”
-          "transition-transform duration-700 ease-[cubic-bezier(0.16,1,0.3,1)]",
-          "focus:outline-none focus-visible:ring-2 focus-visible:ring-offset-2",
-          isDark
-            ? "focus-visible:ring-white/60 focus-visible:ring-offset-[#0b1324]"
-            : "focus-visible:ring-black/30 focus-visible:ring-offset-white",
+          "px-10 py-16 md:px-14 lg:px-16",
+          "transition-all duration-700 ease-[cubic-bezier(0.16,1,0.3,1)]",
+          "focus:outline-none focus-visible:ring-2 focus-visible:ring-black/20 focus-visible:ring-offset-2",
+          "focus-visible:ring-offset-[#f5f5f7]",
           tileStyles[index],
         ].join(" ")}
       >
-        {/* Subtle vignette to add depth (quiet luxury) */}
+        {/* Subtle premium light vignette */}
         <span
           aria-hidden="true"
-          className={[
-            "pointer-events-none absolute inset-0 -z-10",
-            isDark
-              ? "bg-[radial-gradient(900px_520px_at_50%_20%,rgba(255,255,255,0.10),transparent_60%)]"
-              : "bg-[radial-gradient(900px_520px_at_50%_20%,rgba(0,0,0,0.06),transparent_60%)]",
-          ].join(" ")}
+          className="
+            pointer-events-none absolute inset-0 -z-10
+            bg-[radial-gradient(900px_520px_at_50%_18%,rgba(15,23,42,0.025),transparent_62%)]
+          "
         />
 
-        {/* Soft hover sheen (very subtle) */}
+        {/* Soft white hover sheen */}
         <span
           aria-hidden="true"
-          className={[
-            "pointer-events-none absolute inset-0 -z-10 opacity-0 group-hover:opacity-100",
-            "transition-opacity duration-700 ease-[cubic-bezier(0.16,1,0.3,1)]",
-            isDark
-              ? "bg-[radial-gradient(1000px_600px_at_50%_-10%,rgba(255,255,255,0.12),transparent_60%)]"
-              : "bg-[radial-gradient(1000px_600px_at_50%_-10%,rgba(0,0,0,0.05),transparent_60%)]",
-          ].join(" ")}
+          className="
+            pointer-events-none absolute inset-0 -z-10 opacity-0 group-hover:opacity-100
+            transition-opacity duration-700 ease-[cubic-bezier(0.16,1,0.3,1)]
+            bg-[radial-gradient(1000px_600px_at_50%_-10%,rgba(255,255,255,0.65),transparent_60%)]
+          "
         />
 
-        {/* Border glow on hover (replaces boxy shadow) */}
+        {/* Gentle edge definition */}
         <motion.span
           aria-hidden="true"
           className="pointer-events-none absolute inset-0 rounded-none"
-          initial={{ opacity: 0 }}
+          initial={{ opacity: 0.85 }}
           whileHover={reduceMotion ? {} : { opacity: 1 }}
           transition={{ duration: 0.6, ease: [0.16, 1, 0.3, 1] as const }}
           style={{
-            boxShadow: isDark
-              ? "inset 0 0 0 1px rgba(255,255,255,0.10), 0 24px 80px rgba(0,0,0,0.35)"
-              : "inset 0 0 0 1px rgba(0,0,0,0.08), 0 24px 80px rgba(0,0,0,0.10)",
+            boxShadow:
+              "inset 0 0 0 1px rgba(15,23,42,0.05), 0 12px 34px rgba(15,23,42,0.05)",
           }}
         />
 
-        {/* Micro lift (no “card shadow” vibe) */}
+        {/* Micro lift */}
         <motion.div
           whileHover={
             reduceMotion
               ? undefined
               : {
-                  y: -6,
+                  y: -4,
                   transition: { duration: 0.7, ease: [0.16, 1, 0.3, 1] as const },
                 }
           }
-          className="relative flex flex-col items-center max-w-[34rem]"
+          className="relative flex max-w-[34rem] flex-col items-center"
         >
           {/* Typography */}
           <div className="space-y-4">
-            <h1 className="text-5xl md:text-6xl lg:text-7xl font-light tracking-[-0.02em] leading-[1.05]">
+            <h1 className="gateway-header text-2xl font-light leading-[1.05] tracking-[-0.02em] md:text-3xl lg:text-4xl">
               {mainTitle}
             </h1>
 
             {subTitle && (
-              <h2 className="text-xs md:text-sm font-medium tracking-[0.32em] uppercase opacity-70">
+              <h2 className="text-xs font-medium uppercase tracking-[0.32em] text-[#6b7280] md:text-sm">
                 {subTitle}
               </h2>
             )}
           </div>
 
           {/* Descriptor */}
-          <p
-            className={[
-              "mt-8 text-sm md:text-base leading-relaxed",
-              "max-w-[46ch]",
-              isDark ? "text-white/75" : "text-[#4b5563]",
-            ].join(" ")}
-          >
+          <p className="mt-8 max-w-[46ch] text-sm leading-relaxed text-[#4b5563] md:text-base">
             {descriptor}
           </p>
 
           {/* CTA */}
           <span
-            className={[
-              "mt-10 inline-flex items-center gap-2 rounded-full",
-              "px-6 py-3 text-[11px] tracking-[0.22em] uppercase font-medium",
-              "border transition-all duration-700",
-              "backdrop-blur-sm",
-              isDark
-                ? "border-white/22 text-white bg-white/5 group-hover:bg-white/10"
-                : "border-black/12 text-black bg-black/[0.02] group-hover:bg-black/[0.04]",
-            ].join(" ")}
+            className="
+              mt-10 inline-flex items-center gap-2 rounded-full
+              border border-black/[0.08]
+              bg-white/80 px-6 py-3
+              text-[11px] font-medium uppercase tracking-[0.22em] text-[#111827]
+              backdrop-blur-md
+              transition-all duration-700
+              group-hover:border-black/[0.12]
+              group-hover:bg-white
+            "
           >
             Learn More
             <ArrowRight
@@ -173,14 +158,10 @@ const GatewayTile = ({
             />
           </span>
 
-          {/* Micro underline divider (Apple-ish) */}
+          {/* Micro underline divider */}
           <span
             aria-hidden="true"
-            className={[
-              "mt-10 h-px w-16",
-              isDark ? "bg-white/18" : "bg-black/10",
-              "opacity-70",
-            ].join(" ")}
+            className="mt-10 h-px w-16 bg-black/[0.08] opacity-70"
           />
         </motion.div>
       </Link>
