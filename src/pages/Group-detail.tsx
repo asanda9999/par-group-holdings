@@ -542,6 +542,4 @@ export default function ParEquityGroupPage() {
       </section>
     </div>
   );
-}
-
-export default ParEquityGroupPage;
+};
