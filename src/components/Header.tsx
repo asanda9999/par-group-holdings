@@ -26,6 +26,8 @@ const contentLinks = [
 const Header = () => {
   const [mobileOpen, setMobileOpen] = useState(false);
   const location = useLocation();
+  
+  const isGatewayPage = location.pathname === "/";
 
   const handleScrollTo = (id: "top" | "about" | "portfolio" | "team" | "contact") => {
     const pathParts = location.pathname.split("/").filter(Boolean);
@@ -82,11 +84,11 @@ const Header = () => {
 
             {/* Centered logo - hidden on mobile */}
             <div className="hidden md:flex items-center justify-center">
-              <Link to="/" className="flex items-center justify-center">
+              <Link to="/group-details" className="flex items-center justify-center">
                 <img
                   src={parLogo}
                   alt="Par Group Holdings"
-                  className="h-20 md:h-32 w-auto"
+                  className="h-20 md:h-32 w-auto cursor-pointer hover:opacity-80 transition-opacity"
                 />
               </Link>
             </div>

@@ -7,6 +7,7 @@ interface GatewayTileProps {
   title: string;
   descriptor: string;
   to: string;
+  logoSrc?: string;
 }
 
 const tileStyles = [
@@ -31,6 +32,7 @@ const GatewayTile = ({
   descriptor,
   to,
   index,
+  logoSrc,
 }: GatewayTileProps & { index: number }) => {
   const reduceMotion = useReducedMotion();
 
@@ -120,6 +122,17 @@ const GatewayTile = ({
           }
           className="relative flex max-w-[34rem] flex-col items-center"
         >
+          {/* Logo */}
+          {logoSrc && (index === 0 || index === 2) && (
+            <div className="mb-8">
+              <img
+                src={logoSrc}
+                alt={`${title} logo`}
+                className="h-16 w-auto md:h-20 lg:h-24"
+              />
+            </div>
+          )}
+
           {/* Typography */}
           <div className="space-y-4">
             <h1 className="gateway-header text-2xl font-light leading-[1.05] tracking-[-0.02em] md:text-3xl lg:text-4xl">

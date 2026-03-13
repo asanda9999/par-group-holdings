@@ -12,6 +12,7 @@ const Index = lazy(() => import("./pages/Index"));
 const ParEquity = lazy(() => import("./pages/ParEquity"));
 const AnthuriFund = lazy(() => import("./pages/AnthuriFund"));
 const Parvest = lazy(() => import("./pages/Parvest"));
+const GroupDetail = lazy(() => import("./pages/Group-detail"));
 const NotFound = lazy(() => import("./pages/NotFound"));
 const TeamMemberPage = lazy(() => import("./pages/TeamMemberPage"));
 const PortfolioDetailPage = lazy(() => import("./pages/PortfolioDetailPage"));
@@ -20,7 +21,7 @@ const Maintenance = lazy(() => import("./pages/Maintenance"));
 const queryClient = new QueryClient();
 
 // Set this to true to enable maintenance mode
-const MAINTENANCE_MODE = false;
+const MAINTENANCE_MODE = true;
 
 const App = () => (
   <QueryClientProvider client={queryClient}>
@@ -50,6 +51,7 @@ const App = () => (
                 <Route path="/parvest" element={<Parvest />} />
                 <Route path="/parvest/team/:slug" element={<TeamMemberPage />} />
                 <Route path="/parvest/portfolio/:slug" element={<PortfolioDetailPage />} />
+                <Route path="/group-details" element={<GroupDetail />} />
                 <Route path="*" element={<NotFound />} />
               </>
             )}
