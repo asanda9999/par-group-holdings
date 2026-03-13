@@ -123,12 +123,12 @@ const GatewayTile = ({
           className="relative flex max-w-[34rem] flex-col items-center"
         >
           {/* Logo */}
-          {logoSrc && (index === 0 || index === 2) && (
+          {logoSrc && (index === 0 || index === 1 || index === 2) && (
             <div className="mb-8">
               <img
                 src={logoSrc}
                 alt={`${title} logo`}
-                className="h-16 w-auto md:h-20 lg:h-24"
+                className={index === 1 ? "h-32 w-auto md:h-40 lg:h-48" : "h-20 w-auto md:h-24 lg:h-32"}
               />
             </div>
           )}

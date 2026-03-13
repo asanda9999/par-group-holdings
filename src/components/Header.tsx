@@ -28,6 +28,7 @@ const Header = () => {
   const location = useLocation();
   
   const isGatewayPage = location.pathname === "/";
+  const isGroupDetailsPage = location.pathname === "/group-details";
 
   const handleScrollTo = (id: "top" | "about" | "portfolio" | "team" | "contact") => {
     const pathParts = location.pathname.split("/").filter(Boolean);
@@ -94,23 +95,25 @@ const Header = () => {
             </div>
 
             {/* Right: Desktop content nav */}
-            <motion.nav
-              className="hidden md:flex items-center justify-end gap-8 text-xs tracking-[0.35em] uppercase"
-              initial={{ opacity: 0, y: -8 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.3, ease: "easeOut" }}
-            >
-              {contentLinks.map((link) => (
-                <AnimatedNavLink
-                  key={link.label}
-                  onClick={() => handleScrollTo(link.id)}
-                  lineColor="#000000"
-                  className="text-muted-foreground hover:text-foreground"
-                >
-                  {link.label}
-                </AnimatedNavLink>
-              ))}
-            </motion.nav>
+            {!isGroupDetailsPage && (
+              <motion.nav
+                className="hidden md:flex items-center justify-end gap-8 text-xs tracking-[0.35em] uppercase"
+                initial={{ opacity: 0, y: -8 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.3, ease: "easeOut" }}
+              >
+                {contentLinks.map((link) => (
+                  <AnimatedNavLink
+                    key={link.label}
+                    onClick={() => handleScrollTo(link.id)}
+                    lineColor="#000000"
+                    className="text-muted-foreground hover:text-foreground"
+                  >
+                    {link.label}
+                  </AnimatedNavLink>
+                ))}
+              </motion.nav>
+            )}
 
             {/* Mobile menu toggle (right side) - hidden on mobile */}
             <div className="hidden items-center justify-end">
@@ -173,7 +176,7 @@ const Header = () => {
               </div>
 
               <div className="mt-2 border-t border-border pt-3 space-y-2">
-                {contentLinks.map((link, index) => (
+                {!isGroupDetailsPage && contentLinks.map((link, index) => (
                   <motion.div
                     key={link.label}
                     initial={{ opacity: 0, x: -20 }}

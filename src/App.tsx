@@ -21,7 +21,7 @@ const Maintenance = lazy(() => import("./pages/Maintenance"));
 const queryClient = new QueryClient();
 
 // Set this to true to enable maintenance mode
-const MAINTENANCE_MODE = true;
+const MAINTENANCE_MODE = false;
 
 const App = () => (
   <QueryClientProvider client={queryClient}>

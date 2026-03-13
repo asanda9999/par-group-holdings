@@ -7,6 +7,7 @@ import OptimizedImage from "@/components/OptimizedImage";
 import logo from "@/assets/OG-Logo.svg";
 import peLogo from "@/assets/PE.svg";
 import parvestLogo from "@/assets/Parvest.svg";
+import anthuriLogo from "@/assets/Logo final 2.svg";
 
 const tiles = [
   {
@@ -20,6 +21,7 @@ const tiles = [
     descriptor:
       "Impact-driven capital focused on sustainable growth and transformation",
     to: "/anthuri-fund",
+    logoSrc: anthuriLogo,
   },
   {
     title: "ParVest",
@@ -64,7 +66,7 @@ const Index = () => {
           <div className="mx-auto flex max-w-7xl flex-col items-center px-6 pt-16 pb-10 md:pt-20 md:pb-12">
             <motion.button
               type="button"
-              onClick={() => navigate("/group")}
+              onClick={() => navigate("/group-details")}
               onMouseEnter={() => setIsParentHovered(true)}
               onMouseLeave={() => setIsParentHovered(false)}
               initial={{ opacity: 0, y: -10, filter: "blur(6px)" }}
