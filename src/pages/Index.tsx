@@ -11,23 +11,20 @@ import anthuriLogo from "@/assets/Logo final 2.svg";
 
 const tiles = [
   {
-    id: "parequity",
-    title: "",
+    title: "ParEquity",
     descriptor: "Long-term private equity investments in established businesses",
     to: "/parequity",
     logoSrc: peLogo,
   },
   {
-    id: "anthuri-fund",
-    title: "",
+    title: "Anthuri Fund",
     descriptor:
       "Impact-driven capital focused on sustainable growth and transformation",
     to: "/anthuri-fund",
     logoSrc: anthuriLogo,
   },
   {
-    id: "parvest",
-    title: "",
+    title: "ParVest",
     descriptor:
       "Long-term investment in responsibly stewarded income-generating real estate",
     to: "/parvest",
